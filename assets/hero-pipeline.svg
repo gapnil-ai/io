@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340" role="img" aria-label="TokenFly 视频生成流水线：文本编码、重复去噪、解码、封装；交付一条成片从 226.2 秒降到 6.96 秒">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340" width="900" height="340" role="img" aria-label="Gapnil 视频生成流水线：文本编码、重复去噪、解码、封装；交付一条成片从 226.2 秒降到 6.96 秒">
 <style>
 text{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',Helvetica,Arial,sans-serif;fill:#e8edf5}
 .s{fill:#0a1224;stroke:#16294a;stroke-width:1.5}
@@ -18,7 +18,7 @@ text{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',Helvetica,Arial,
 @keyframes dash{to{stroke-dashoffset:-12}}
 </style>
 <rect width="900" height="340" rx="18" fill="#050914"/>
-<text x="450" y="38" class="t" style="font-size:19px">TokenFly 引擎：一句提示词 → 带声音的视频</text>
+<text x="450" y="38" class="t" style="font-size:19px">Gapnil 引擎：一句提示词 → 带声音的视频</text>
 <text x="450" y="58" class="u">优化不是只让一个算子变快，而是少算、快算、并行，以及少搬、少等</text>
 <g stroke="#3b82f6" stroke-width="2" fill="none" class="flow" opacity=".7">
 <path d="M150 140H200"/><path d="M290 140H345"/><path d="M555 140H610"/><path d="M700 140H745"/></g>

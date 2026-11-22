@@ -1,4 +1,4 @@
-<p align="center"><b style="font-size:30px">TokenFly × AgentV</b></p>
+<p align="center"><b style="font-size:30px">Gapnil × AgentV</b></p>
 
 <p align="center"><b>会自己变快的推理引擎。更省，更快，更真。</b></p>
 
@@ -7,21 +7,21 @@
 <p align="center">
   <a href="https://poping.art/agentv"><img src="https://img.shields.io/badge/Try-poping.art%2Fagentv-22d3ee?style=for-the-badge" height="28" alt="Try AgentV"></a>
   <a href="https://gapnil-ai.github.io/io/"><img src="https://img.shields.io/badge/Website-GitHub_Pages-3b82f6?style=for-the-badge" height="28" alt="Website"></a>
-  <a href="https://tokenfly.chat/"><img src="https://img.shields.io/badge/API-tokenfly.chat-b4ff4a?style=for-the-badge" height="28" alt="TokenFly API"></a>
-  <img src="https://img.shields.io/badge/TokenFly-旗下品牌-a78bfa?style=for-the-badge" height="28" alt="TokenFly 旗下品牌">
+  <a href="https://zerogap.cn/"><img src="https://img.shields.io/badge/API-zerogap.cn-b4ff4a?style=for-the-badge" height="28" alt="Gapnil API"></a>
+  <img src="https://img.shields.io/badge/Gapnil-旗下品牌-a78bfa?style=for-the-badge" height="28" alt="Gapnil 旗下品牌">
 </p>
 
 <p align="center"><a href="media/world.mp4"><img src="media/world.jpg" width="900" alt="AgentV 在 3D 空间里放置摄影机、调整视场角，再生成电影级画面"></a></p>
 
-TokenFly 是推理引擎，AgentV 是用它拍电影的产品。
+Gapnil 是推理引擎，AgentV 是用它拍电影的产品。
 
 - **价格：拍得起。** 一条 5 秒视频的算力成本约 ¥0.02–0.03（估算），比托管 API 起步价低一到两个数量级。
 - **速度：等得起。** 约 5 秒出片，720p 下生成 4.83 秒，短于 5.17 秒的成片时长。
 - **空间真实感：镜头是真的。** 用对话搭出能走进去的 3D 空间，机位、焦距、路径都是真实的数值。
 
-## TokenFly 引擎：约 5 秒出片，720p 下生成快于播放
+## Gapnil 引擎：约 5 秒出片，720p 下生成快于播放
 
-TokenFly 是零隙智能从零自研的推理引擎，不依赖现成的推理框架，跑在 8 张没有 NVLink 的消费级 RTX 5090 上。同一个 330 亿参数的开源视频模型，单卡完整模式要将近 4 分钟；在 TokenFly 上，线上生成中位数 5.23 秒。
+Gapnil 是零隙智能从零自研的推理引擎，不依赖现成的推理框架，跑在 8 张没有 NVLink 的消费级 RTX 5090 上。同一个 330 亿参数的开源视频模型，单卡完整模式要将近 4 分钟；在 Gapnil 上，线上生成中位数 5.23 秒。
 
 | 配置 | 交付一条 5.17 秒成片 | 相对起点 |
 | --- | --- | --- |
@@ -31,14 +31,14 @@ TokenFly 是零隙智能从零自研的推理引擎，不依赖现成的推理�
 | 8 卡 · 4 步 | 11.9 秒 | 19.0× |
 | 7 卡 · 3 步（线上中位数） | 6.96 秒 | 32.5× |
 
-<a href="https://gapnil-ai.github.io/io/#engine"><img src="assets/hero-pipeline.svg" width="100%" alt="TokenFly 生成流水线：文本编码、重复去噪、解码、封装"></a>
+<a href="https://gapnil-ai.github.io/io/#engine"><img src="assets/hero-pipeline.svg" width="100%" alt="Gapnil 生成流水线：文本编码、重复去噪、解码、封装"></a>
 
 - **少算**：压缩权重直接参与计算，只在重要区域精算（低精度 1.37×、稀疏注意力 2.62×、算子融合 1.19× / 1.14×）。
 - **并行**：没有高端互连的消费级显卡照样多卡加速（文本编码 31.38 → 1.08 秒，单次前向 8 卡比 4 卡再快 1.67×）。
 - **少等**：计算和传输同时进行，输出逐位一致（每次前向 −7.0%）。
 - **少搬**：分块解码、硬件封装（分块解码 1.78×，封装 9.46 → 2.01 秒）。
 
-同一组提示词端到端：TokenFly 9.19–11.73 秒，同为 3 步的 SGLang 29.65–31.74 秒（显卡数与精度不同），快约 3 倍；相比 20 步的标准 SGLang 部署（约 115 秒）快 10 倍以上。
+同一组提示词端到端：Gapnil 9.19–11.73 秒，同为 3 步的 SGLang 29.65–31.74 秒（精度不同），快约 3 倍；相比 20 步的标准 SGLang 部署（约 115 秒）快 10 倍以上。
 
 ### 消费级显卡，整机搬得进机房
 
@@ -73,12 +73,12 @@ TokenFly 是零隙智能从零自研的推理引擎，不依赖现成的推理�
 
 <details><summary>数据口径</summary>
 
-TokenFly 实验记录与线上日志（2026 年 9–10 月），8×RTX 5090。1344×768 生成 5.23 秒（n=13），1280×720 生成 4.83 秒（n=152）。4 步与 3 步模式使用开源加速 LoRA，不声称与完整模式画质等价。¥0.02–0.03 单条成本为估算。
+Gapnil 实验记录与线上日志（2026 年 9–10 月），8×RTX 5090。1344×768 生成 5.23 秒（n=13），1280×720 生成 4.83 秒（n=152）。4 步与 3 步模式使用开源加速 LoRA，不声称与完整模式画质等价。¥0.02–0.03 单条成本为估算。
 </details>
 
 ## AgentV：技术落到产品
 
-AgentV 是跑在 TokenFly 上的导演台。引擎快了，才敢让你先搭出一个 3D 世界、摆好机位，再一个镜头一个镜头地拍。
+AgentV 是跑在 Gapnil 上的导演台。引擎快了，才敢让你先搭出一个 3D 世界、摆好机位，再一个镜头一个镜头地拍。
 
 ### 别的工具在抽卡，AgentV 在拍片
 
@@ -104,14 +104,14 @@ AgentV 是跑在 TokenFly 上的导演台。引擎快了，才敢让你先搭出
 
 <a href="https://poping.art/agentv"><img src="agentv/shot-11.jpg" width="100%" alt="同一张脸的六种情绪"></a>
 
-## TokenFly Token 平台：同一台引擎，也开放给你的代码
+## Gapnil Token 平台：同一台引擎，也开放给你的代码
 
-不拍片也能用上它。[tokenfly.chat](https://tokenfly.chat/) 是从算子做起的 Token 平台：一个接口调用文本、图像、语音和视频模型，153 个模型、23 家厂商，价格低至厂商官方价的 2.6 折（2026 年 11 月 22 日官网所示，实时价格以官网为准）。
+不拍片也能用上它。[zerogap.cn](https://zerogap.cn/) 是从算子做起的 Token 平台：一个接口调用文本、图像、语音和视频模型，153 个模型、23 家厂商，价格低至厂商官方价的 2.6 折（2026 年 11 月 22 日官网所示，实时价格以官网为准）。
 
 Claude Code 一行命令切换：
 
 ```bash
-eval "$(curl -fsSL 'https://tokenfly.chat/switch/claude?model=glm-5.3')"
+eval "$(curl -fsSL 'https://zerogap.cn/switch/claude?model=glm-5.3')"
 ```
 
 - **Token 平台**：按用量计费，随充随用，适合开发者和技术团队。
