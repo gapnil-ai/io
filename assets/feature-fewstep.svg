@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width="900" height="300" role="img" aria-label="少步适配：49 次模型求值降到 3 次">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC',Helvetica,Arial,sans-serif;fill:#e8edf5;font-size:14px}.m{fill:#7f93b5;font-size:12px}
+.dot{fill:#3b82f6;animation:b 6s infinite}
+@keyframes b{0%,10%{opacity:.18}12%,100%{opacity:1}}
+.k{animation:kk 6s infinite}@keyframes kk{0%,40%{opacity:1}60%,100%{opacity:.08}}
+.r{animation:rr 6s infinite}@keyframes rr{0%,40%{opacity:0}60%,100%{opacity:1}}
+</style>
+<rect width="900" height="300" rx="18" fill="#050914"/>
+<text x="40" y="42" style="font-size:19px;font-weight:700">少算几步：从 49 次前向到 3 次前向</text>
+<text x="40" y="64" class="m">蒸馏 + 适配器让模型一步跨得更远 · 经六候选 × 十提示词人工比较选定</text>
+<g class="k" id="g49">
+<circle class="dot" cx="52.0" cy="120" r="6" style="animation-delay:0.00s"/>
+<circle class="dot" cx="69.5" cy="120" r="6" style="animation-delay:0.02s"/>
+<circle class="dot" cx="87.0" cy="120" r="6" style="animation-delay:0.04s"/>
+<circle class="dot" cx="104.5" cy="120" r="6" style="animation-delay:0.06s"/>
+<circle class="dot" cx="122.0" cy="120" r="6" style="animation-delay:0.08s"/>
+<circle class="dot" cx="139.5" cy="120" r="6" style="animation-delay:0.10s"/>
+<circle class="dot" cx="157.0" cy="120" r="6" style="animation-delay:0.12s"/>
+<circle class="dot" cx="174.5" cy="120" r="6" style="animation-delay:0.14s"/>
+<circle class="dot" cx="192.0" cy="120" r="6" style="animation-delay:0.16s"/>
+<circle class="dot" cx="209.5" cy="120" r="6" style="animation-delay:0.18s"/>
+<circle class="dot" cx="227.0" cy="120" r="6" style="animation-delay:0.20s"/>
+<circle class="dot" cx="244.5" cy="120" r="6" style="animation-delay:0.22s"/>
+<circle class="dot" cx="262.0" cy="120" r="6" style="animation-delay:0.24s"/>
+<circle class="dot" cx="279.5" cy="120" r="6" style="animation-delay:0.26s"/>
+<circle class="dot" cx="297.0" cy="120" r="6" style="animation-delay:0.28s"/>
+<circle class="dot" cx="314.5" cy="120" r="6" style="animation-delay:0.30s"/>
+<circle class="dot" cx="332.0" cy="120" r="6" style="animation-delay:0.32s"/>
+<circle class="dot" cx="349.5" cy="120" r="6" style="animation-delay:0.34s"/>
+<circle class="dot" cx="367.0" cy="120" r="6" style="animation-delay:0.36s"/>
+<circle class="dot" cx="384.5" cy="120" r="6" style="animation-delay:0.38s"/>
+<circle class="dot" cx="402.0" cy="120" r="6" style="animation-delay:0.40s"/>
+<circle class="dot" cx="419.5" cy="120" r="6" style="animation-delay:0.42s"/>
+<circle class="dot" cx="437.0" cy="120" r="6" style="animation-delay:0.44s"/>
+<circle class="dot" cx="454.5" cy="120" r="6" style="animation-delay:0.46s"/>
+<circle class="dot" cx="472.0" cy="120" r="6" style="animation-delay:0.48s"/>
+<circle class="dot" cx="489.5" cy="120" r="6" style="animation-delay:0.50s"/>
+<circle class="dot" cx="507.0" cy="120" r="6" style="animation-delay:0.52s"/>
+<circle class="dot" cx="524.5" cy="120" r="6" style="animation-delay:0.54s"/>
+<circle class="dot" cx="542.0" cy="120" r="6" style="animation-delay:0.56s"/>
+<circle class="dot" cx="559.5" cy="120" r="6" style="animation-delay:0.58s"/>
+<circle class="dot" cx="577.0" cy="120" r="6" style="animation-delay:0.60s"/>
+<circle class="dot" cx="594.5" cy="120" r="6" style="animation-delay:0.62s"/>
+<circle class="dot" cx="612.0" cy="120" r="6" style="animation-delay:0.64s"/>
+<circle class="dot" cx="629.5" cy="120" r="6" style="animation-delay:0.66s"/>
+<circle class="dot" cx="647.0" cy="120" r="6" style="animation-delay:0.68s"/>
+<circle class="dot" cx="664.5" cy="120" r="6" style="animation-delay:0.70s"/>
+<circle class="dot" cx="682.0" cy="120" r="6" style="animation-delay:0.72s"/>
+<circle class="dot" cx="699.5" cy="120" r="6" style="animation-delay:0.74s"/>
+<circle class="dot" cx="717.0" cy="120" r="6" style="animation-delay:0.76s"/>
+<circle class="dot" cx="734.5" cy="120" r="6" style="animation-delay:0.78s"/>
+<circle class="dot" cx="752.0" cy="120" r="6" style="animation-delay:0.80s"/>
+<circle class="dot" cx="769.5" cy="120" r="6" style="animation-delay:0.82s"/>
+<circle class="dot" cx="787.0" cy="120" r="6" style="animation-delay:0.84s"/>
+<circle class="dot" cx="804.5" cy="120" r="6" style="animation-delay:0.86s"/>
+<circle class="dot" cx="822.0" cy="120" r="6" style="animation-delay:0.88s"/>
+<circle class="dot" cx="839.5" cy="120" r="6" style="animation-delay:0.90s"/>
+<circle class="dot" cx="857.0" cy="120" r="6" style="animation-delay:0.92s"/>
+<circle class="dot" cx="874.5" cy="120" r="6" style="animation-delay:0.94s"/>
+<circle class="dot" cx="892.0" cy="120" r="6" style="animation-delay:0.96s"/>
+</g>
+<text x="40" y="160" class="m">49 次（起点）</text>
+<g class="r">
+<circle cx="300" cy="205" r="18" fill="#22d3ee"/>
+<circle cx="450" cy="205" r="18" fill="#22d3ee"/>
+<circle cx="600" cy="205" r="18" fill="#22d3ee"/>
+<text x="40" y="210">3 次（TaoMate 三步适配器，强度 1.0）</text>
+<text x="40" y="265" style="fill:#22d3ee;font-weight:700;font-size:16px">线上 720p 生成 4.83 秒，短于 5.17 秒的成片时长</text>
+</g>
+</svg>

@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AgentV × TokenFly · 先造世界，再拍电影</title>
+<meta name="description" content="更省、更快、更真：一条 5 秒视频约两三分钱（估算），约 5 秒出片，每个镜头都拍在能走进去的 3D 空间里。AgentV × TokenFly。">
+<meta property="og:title" content="AgentV × TokenFly · 先造世界，再拍电影">
+<meta property="og:description" content="更省、更快、更真：两三分钱一条，约 5 秒出片，镜头拍在真实的 3D 空间里。">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://learningcathd.github.io/og.jpg">
+<meta property="og:url" content="https://learningcathd.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#07090a">
+<link rel="preload" href="fonts/smiley.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:Smiley;src:url(fonts/smiley.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Jersey;src:url(fonts/jersey15.woff2) format("woff2");font-display:swap}
+:root{--bg:#07090a;--bg2:#0d1113;--line:#1f2729;--fg:#eef2ee;--mute:#8a968f;--ac:#b4ff4a;--ac2:#b4ff4a22}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.w{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3,.sm{font-family:Smiley,-apple-system,"PingFang SC",sans-serif;font-weight:400;margin:0}
+.num{font-family:Jersey,ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.ac{color:var(--ac)}.mute{color:var(--mute)}
+nav{position:fixed;top:0;left:0;right:0;z-index:30;transition:background .3s}
+nav.s{background:#07090aee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .w{display:flex;justify-content:space-between;align-items:center;height:60px}
+nav .l{font-family:Smiley;font-size:20px}nav .r a{margin-left:26px;font-size:14px;color:#c9d2cc}nav .r a:hover{color:var(--ac)}
+nav .r a.go{color:#07090a;background:var(--ac);padding:7px 16px;border-radius:99px;font-weight:700}
+@media(max-width:720px){nav .r a:not(.go){display:none}}
+.btn{display:inline-block;padding:14px 28px;border-radius:99px;font-weight:700;font-size:16px;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{background:var(--ac);color:#07090a}.btn.g{border:1px solid #ffffff44;color:var(--fg);backdrop-filter:blur(6px)}
+/* corner brackets motif */
+.br{position:relative}
+.br::before,.br::after{content:"";position:absolute;width:22px;height:22px;border:2px solid var(--ac);pointer-events:none;z-index:3}
+.br::before{left:-1px;top:-1px;border-right:0;border-bottom:0}.br::after{right:-1px;bottom:-1px;border-left:0;border-top:0}
+
+/* 1 hero */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#07090a99 0,#07090a22 30%,#07090a66 60%,#07090a 100%)}
+.hero .in{position:relative;z-index:2;width:100%;padding-bottom:56px;display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(46px,8vw,112px);line-height:1.02;letter-spacing:.01em}
+.hero p{font-size:clamp(16px,1.6vw,20px);color:#d5ddd7;max-width:520px;margin:20px 0 28px}
+.race{background:#07090acc;border:1px solid var(--line);backdrop-filter:blur(12px);padding:22px 24px}
+.race .t{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;font-size:14px}
+.race .num{font-size:34px;line-height:1}
+.track{height:8px;background:#ffffff14;margin-bottom:18px;position:relative}
+.track i{position:absolute;left:0;top:0;bottom:0;width:0;background:#ffffff88}
+.track.g i{background:var(--ac);box-shadow:0 0 16px var(--ac)}
+.track::after{content:"";position:absolute;right:0;top:-4px;bottom:-4px;width:1px;background:#ffffff55}
+.verdict{font-family:Smiley;font-size:24px;height:34px;opacity:0;transition:opacity .4s}
+.verdict.on{opacity:1}
+.race small{display:block;color:var(--mute);font-size:12px;margin-top:6px;line-height:1.5}
+@media(max-width:900px){.hero{height:auto;padding-top:38svh}.hero .in{grid-template-columns:1fr;gap:26px;padding-bottom:36px}}
+
+section{padding:130px 0 0;scroll-margin-top:-50px}
+.k{display:flex;gap:14px;align-items:center;margin-bottom:18px}.k i{width:36px;height:1px;background:var(--ac)}
+h2{font-size:clamp(34px,5.2vw,68px);line-height:1.08}
+.lead{color:var(--mute);font-size:18px;max-width:600px;margin:18px 0 0}
+
+.tri{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line);margin-top:10px}
+.tri a{padding:44px 28px 40px 0;border-left:1px solid var(--line);padding-left:28px;transition:background .3s}.tri a:first-child{border-left:0;padding-left:0}
+.tri a:hover{background:linear-gradient(180deg,transparent,var(--ac2))}
+.tri b{display:block;font-weight:400;font-size:clamp(64px,9vw,120px);line-height:.9;color:var(--ac);margin:18px 0 16px;white-space:nowrap}
+.tri b i{font-style:normal;font-size:.26em;color:var(--fg);margin-left:.15em}.tri p{color:var(--mute);font-size:15px;margin:0;max-width:320px}
+@media(max-width:860px){.tri{grid-template-columns:1fr}.tri a{border-left:0;padding:30px 0;border-top:1px solid var(--line)}.tri a:first-child{border-top:0}}
+/* 2 camera */
+.cam{display:grid;grid-template-columns:1.5fr 1fr;gap:44px;margin-top:54px;align-items:start}
+@media(max-width:900px){.cam{grid-template-columns:1fr}}
+.vf{aspect-ratio:16/9;overflow:hidden;background:#000;perspective:900px;cursor:crosshair;border:1px solid var(--line)}
+.vf img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.1s cubic-bezier(.2,.8,.2,1);will-change:transform}
+.vf .hud{position:absolute;z-index:2;color:var(--ac);background:#07090acc;padding:3px 9px}
+.vf .rec{width:8px;height:8px;border-radius:50%;background:#ff4d4d;display:inline-block;margin-right:8px;animation:bl 1.2s steps(2) infinite}
+@keyframes bl{50%{opacity:.15}}
+.vf .x{position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px;z-index:2;opacity:.7}
+.vf .x::before,.vf .x::after{content:"";position:absolute;background:var(--ac)}.vf .x::before{left:50%;top:0;bottom:0;width:1px}.vf .x::after{top:50%;left:0;right:0;height:1px}
+.pre{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pre button,.emo button{background:transparent;border:1px solid var(--line);color:#c9d2cc;padding:9px 16px;border-radius:99px;cursor:pointer;font:inherit;font-size:14px;transition:.2s}
+.pre button:hover,.emo button:hover{border-color:var(--ac)}
+.pre button.on,.emo button.on{background:var(--ac);border-color:var(--ac);color:#07090a;font-weight:700}
+.fov{display:flex;align-items:center;gap:14px;margin-top:18px;color:var(--mute);font-size:13px}
+input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:2px;background:var(--line);outline:0}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--ac);cursor:pointer;box-shadow:0 0 0 5px var(--ac2)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border:0;border-radius:50%;background:var(--ac);cursor:pointer}
+.note{font-size:12px;color:var(--mute);margin-top:12px}
+.pts{list-style:none;padding:0;margin:0}
+.pts li{padding:22px 0;border-top:1px solid var(--line)}.pts li:last-child{border-bottom:1px solid var(--line)}
+.pts b{font-family:Smiley;font-size:24px;font-weight:400;display:block}.pts span{color:var(--mute);font-size:15px}
+.real{margin-top:70px;display:grid;grid-template-columns:1fr 1.5fr;gap:44px;align-items:center}
+@media(max-width:900px){.real{grid-template-columns:1fr}}
+.real video{width:100%;display:block;border:1px solid var(--line)}
+.real h3{font-size:34px;line-height:1.15}
+
+/* 3 consistency */
+.con{display:grid;grid-template-columns:1fr 1.6fr;gap:44px;margin-top:54px;align-items:start}
+@media(max-width:900px){.con{grid-template-columns:1fr}}
+.face{aspect-ratio:1/1;background:url(agentv/shot-11.jpg) 0 0/300% 200% no-repeat;transition:background-position .0s;border:1px solid var(--line)}
+.emo{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.sheet img{width:100%;display:block;border:1px solid var(--line)}
+.vs{margin-top:80px;border-top:1px solid var(--line)}
+.vs .r{display:grid;grid-template-columns:120px 1fr 1fr;border-bottom:1px solid var(--line)}
+.vs .r>div{padding:18px 14px;font-size:16px}.vs .r>div:first-child{color:var(--mute);font-size:13px;padding-left:0}
+.vs .r>div:nth-child(2){color:#77827c;text-decoration:line-through;text-decoration-color:#77827c66}
+.vs .h>div{font-family:Smiley;font-size:22px;text-decoration:none!important}.vs .h>div:nth-child(3){color:var(--ac)}
+@media(max-width:700px){.vs .r{grid-template-columns:64px 1fr 1fr}.vs .r>div{font-size:13.5px;padding:12px 8px}}
+
+/* 4 engine scrolly */
+.map{margin-top:54px;border-top:1px solid var(--line)}
+.map .r{display:grid;grid-template-columns:1fr 1.2fr 1.3fr;border-bottom:1px solid var(--line);align-items:center}
+.map .r>div{padding:18px 14px 18px 0}.map .r>div:first-child{font-family:Smiley;font-size:22px}
+.map .r>div:nth-child(2){color:var(--mute);font-size:15px}.map b{color:var(--ac);font-weight:600}
+@media(max-width:700px){.map .r{grid-template-columns:1fr}.map .r>div{padding:4px 0}.map .r{padding:14px 0}}
+.scr{height:520vh;position:relative;margin-top:90px}
+.pin{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.big{font-size:clamp(110px,24vw,330px);line-height:.82;color:var(--ac);letter-spacing:-.01em;white-space:nowrap}
+.big small{font-family:Smiley;font-size:.2em;color:var(--fg);margin-left:.15em}
+.meter{height:6px;background:#ffffff10;margin:34px 0 30px;position:relative}
+.meter i{position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--ac);box-shadow:0 0 22px var(--ac)}
+.sg{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
+@media(max-width:900px){.sg{grid-template-columns:1fr;gap:20px}}
+.stg{position:relative;min-height:150px}
+.stg div{position:absolute;inset:0;opacity:0;transform:translateY(14px);transition:.45s;pointer-events:none}
+.stg div.on{opacity:1;transform:none}
+.stg h3{font-size:clamp(28px,3.6vw,46px);line-height:1.1}.stg p{color:var(--mute);margin:10px 0 0;max-width:480px}
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.pipe span{border:1px solid var(--line);padding:16px 8px;text-align:center;font-size:14px;color:var(--mute);transition:.4s}
+.pipe span.on{border-color:var(--ac);color:var(--ac);background:var(--ac2);box-shadow:0 0 30px var(--ac2)}
+.dots{display:flex;gap:8px;margin-top:22px}.dots i{flex:1;height:2px;background:var(--line);transition:.3s}.dots i.on{background:var(--ac)}
+.xn{font-size:13px;color:var(--mute);margin-top:14px;min-height:22px}
+.after{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border-top:1px solid var(--line);margin-top:20px}
+.after div{padding:26px 22px 26px 0;border-bottom:1px solid var(--line)}
+.after b{font-family:Smiley;font-weight:400;font-size:22px;display:block}.after span{color:var(--mute);font-size:14.5px}
+.anis{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;align-items:center}
+.anis a{border:1px solid var(--line);padding:9px 16px;border-radius:99px;font-size:14px;color:#c9d2cc}.anis a:hover{border-color:var(--ac);color:var(--ac)}
+
+.st3{display:grid;grid-template-columns:repeat(3,1fr);margin-top:54px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.st3 div{padding:28px 0}.st3 b{display:block;font-size:clamp(60px,10vw,128px);line-height:.85;color:var(--ac);font-weight:400}
+.st3 b i{font-style:normal;font-size:.3em;color:var(--fg);margin-left:.1em}.st3 span{color:var(--mute);font-size:14px}
+.term{margin-top:44px;background:var(--bg2);border:1px solid var(--line)}
+.term .tb{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-bottom:1px solid var(--line);color:var(--mute)}
+.term button{background:var(--ac);border:0;color:#07090a;font:inherit;font-size:13px;font-weight:700;padding:6px 16px;border-radius:99px;cursor:pointer}
+.term pre{margin:0;padding:22px 20px 14px;font:15px/1.6 ui-monospace,"SF Mono",Menlo,monospace;white-space:pre-wrap;word-break:break-all}
+.cur{display:inline-block;width:9px;height:18px;background:var(--ac);vertical-align:-3px;margin-left:6px;animation:bl 1s steps(2) infinite}
+.pb{margin-top:44px;background:var(--bg2);border:1px solid var(--line)}
+.pbh,.pbf{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px 20px;color:var(--mute);font-size:13px}
+.pbh{border-bottom:1px solid var(--line)}.pbf{border-top:1px solid var(--line);justify-content:flex-start}.pbf a{margin-left:auto}
+.lg{display:inline-block;width:10px;height:10px;background:#ffffff33;margin-right:7px}.lg.a{background:var(--ac)}
+.pr{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1.4fr) 210px;gap:20px;align-items:center;padding:16px 20px;border-top:1px solid var(--line)}
+.pr:first-child{border-top:0}
+.pr .nm{font:15px ui-monospace,"SF Mono",Menlo,monospace;overflow-wrap:anywhere}
+.pr .nm em{font-style:normal;font-family:-apple-system,"PingFang SC",sans-serif;font-size:12px;color:#07090a;background:var(--ac);padding:1px 8px;border-radius:99px;margin-left:8px;white-space:nowrap}
+.pr .nm em.h{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+.pr .bar{height:8px;background:#ffffff26;position:relative}
+.pr .bar i{position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--ac);transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.pr .px{text-align:right;white-space:nowrap}.pr .px b{font-family:Jersey;font-weight:400;font-size:30px;line-height:1;color:var(--fg)}
+.pr .px u{text-decoration:none;font-size:12px;color:var(--mute);margin-left:2px}.pr .px s{color:var(--mute);font-size:13px;margin-left:10px}
+@media(max-width:700px){.pr{grid-template-columns:1fr auto;gap:8px 12px}.pr .bar{grid-column:1/-1;order:3}}
+.mq{overflow:hidden;margin-top:26px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mq>div{display:inline-flex;gap:44px;white-space:nowrap;font-family:Smiley;font-size:26px;color:#5d6a63;animation:mq 40s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.mch{display:flex;flex-wrap:wrap;gap:8px;padding:0 20px 14px}
+.mch button{background:transparent;border:1px solid var(--line);color:var(--mute);font:12.5px ui-monospace,"SF Mono",Menlo,monospace;padding:5px 12px;border-radius:99px;cursor:pointer;font-weight:400}
+.mch button.on{border-color:var(--ac);color:var(--ac);background:transparent}
+.after em{display:block;margin-top:10px;font-style:normal;color:var(--ac);font-family:Smiley;font-size:19px}
+.bm{margin-top:26px;border-top:1px solid var(--line)}
+.bm .r{display:grid;grid-template-columns:210px 1fr 170px;gap:18px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line);color:var(--mute)}
+.bm .r div{height:10px;background:#ffffff10;position:relative}.bm .r i{position:absolute;left:0;top:0;bottom:0;width:0;background:#ffffff55;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+.bm .r b{font-weight:400;font-size:26px;text-align:right;color:#c9d2cc}
+.bm .t{color:var(--fg)}.bm .t i{background:var(--ac);box-shadow:0 0 16px var(--ac)}.bm .t b{color:var(--ac)}
+@media(max-width:700px){.bm .r{grid-template-columns:1fr auto}.bm .r div{grid-column:1/-1;order:3}}
+.loop{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:54px}
+.loop div{border:1px solid var(--line);padding:20px 16px;transition:.4s;cursor:pointer;position:relative}
+.loop u{text-decoration:none;font-family:Jersey;font-size:30px;color:var(--mute);display:block;line-height:1}
+.loop b{font-family:Smiley;font-weight:400;font-size:21px;display:block;margin:8px 0 6px}.loop span{font-size:12px;color:var(--mute)}
+.loop div.on{border-color:var(--ac);background:var(--ac2)}.loop div.on u{color:var(--ac)}
+@media(max-width:800px){.loop{grid-template-columns:1fr 1fr}}
+.ld{color:#c9d2cc;font-size:17px;min-height:58px;margin:22px 0 0;max-width:720px}
+.pull{font-family:Smiley;font-size:clamp(30px,4.6vw,58px);line-height:1.2;margin:70px 0 0}
+.rej{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:26px}
+@media(max-width:700px){.rej{grid-template-columns:1fr}}
+.rej div{border:1px solid var(--line);padding:22px 20px 26px;position:relative;overflow:hidden}
+.rej b{font-family:Smiley;font-weight:400;font-size:22px;display:block}.rej span{color:var(--mute);font-size:14.5px}
+.rej i{position:absolute;right:14px;bottom:10px;font-style:normal;font-family:Smiley;font-size:22px;color:#ff5d5d;border:2px solid #ff5d5d;padding:0 10px;transform:rotate(-8deg) scale(2.4);opacity:0;transition:transform .35s cubic-bezier(.3,1.6,.5,1),opacity .2s}
+.rej.go i{transform:rotate(-8deg) scale(1);opacity:1}
+.rej.go div:nth-child(2) i{transition-delay:.25s}.rej.go div:nth-child(3) i{transition-delay:.5s}.rej.go div:nth-child(4) i{transition-delay:.75s}
+.st3.q b{font-size:clamp(48px,7.5vw,96px)}.st3.q div{padding-right:20px}
+.fq{margin:40px 0 0;padding:0 0 0 28px;border-left:2px solid var(--ac);max-width:860px}
+.fq p{font-family:Smiley;font-size:clamp(22px,2.9vw,34px);line-height:1.5;margin:0 0 .7em}
+.fq footer{margin-top:30px;display:flex;gap:14px;align-items:baseline;border:0;padding:0}.fq footer b{font-size:18px;color:var(--fg)}.fq footer span{color:var(--mute);font-size:14px}
+/* 5 calc */
+.calc{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;margin-top:54px;align-items:center}
+@media(max-width:900px){.calc{grid-template-columns:1fr;gap:34px}}
+.sl{margin-bottom:30px}.sl input{width:100%}.sl label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;color:var(--mute);font-size:14px}
+.sl label b{font-family:Jersey;font-size:34px;font-weight:400;color:var(--fg);line-height:1}
+.out{border:1px solid var(--line);padding:30px;background:var(--bg2)}
+.out .a .num{font-size:clamp(54px,8vw,96px);line-height:.9;color:var(--ac)}
+.out .b{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);color:var(--mute)}
+.out .b .num{font-size:36px;color:#c9d2cc;line-height:1}
+.out .c{margin-top:18px;font-size:14px;color:var(--mute)}
+.fin{text-align:center;padding:150px 0 110px}
+.fin h2{font-size:clamp(40px,7vw,96px)}
+footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--mute);font-size:12.5px;line-height:1.9}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s,transform .9s}.rv.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.vf img{transition:none}html{scroll-behavior:auto}.vf .rec,.cur,.mq>div{animation:none}.pr .bar i{transition:none}}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="w"><a class="l" href="#">AgentV <span class="ac">×</span> TokenFly</a><div class="r"><a href="#world">造世界</a><a href="#same">不跑偏</a><a href="#engine">引擎</a><a href="#rsi">自演进</a><a href="#api">API</a><a href="#cost">算账</a><a class="go" href="https://poping.art/agentv">立即体验</a></div></div></nav>
+
+<header class="hero">
+  <video id="hv" src="media/world.mp4" poster="media/world.jpg" autoplay muted loop playsinline></video>
+  <div class="w in">
+    <div>
+      <div class="mono ac" style="margin-bottom:18px">更省 · 更快 · 更真</div>
+      <h1>先造世界，<br>再拍电影</h1>
+      <p>空间是真的，能走进去、能摆机位。出片约 5 秒，生成比播放还快。一条只要两三分钱。</p>
+      <a class="btn p" href="https://poping.art/agentv">立即体验</a> <a class="btn g" href="#engine">为什么这么快</a>
+    </div>
+    <div class="race br" id="race">
+      <div class="t"><span>成片播放</span><span class="num" id="r1">0.00</span></div>
+      <div class="track"><i id="b1"></i></div>
+      <div class="t"><span class="ac">AgentV 生成</span><span class="num ac" id="r2">0.00</span></div>
+      <div class="track g"><i id="b2"></i></div>
+      <div class="verdict" id="vd">生成比播放快 <span class="ac">0.34 秒</span></div>
+      <small>计时按真实速度播放。720p 线上生成 4.83 秒，成片时长 5.17 秒；线上 3 步配置，画质与完整模式不等价。背景为产品真实录屏。</small>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="w tri rv">
+  <a href="#cost"><span class="mono ac">价格 · 拍得起</span><b class="num">¥0.02<i class="sm">起</i></b><p>一条 5 秒视频的算力成本约两三分钱（估算），比托管 API 起步价低一到两个数量级。</p></a>
+  <a href="#engine"><span class="mono ac">速度 · 等得起</span><b class="num">5<i class="sm">秒出片</i></b><p>330 亿参数的视频模型，720p 下生成比播放还快。改一句台词，马上看到结果。</p></a>
+  <a href="#world"><span class="mono ac">空间真实感 · 镜头是真的</span><b class="num">3D</b><p>场景不是一张图，是能走进去的空间。机位、焦距、路径都是真实的数值，换机位陈设不变。</p></a>
+</div>
+<section id="world" class="w">
+  <div class="k rv"><i></i><span class="mono ac">01 造世界 · 空间真实感</span></div>
+  <h2 class="rv">镜头不靠描述，<br>靠空间里的摄影机</h2>
+  <p class="lead rv">别的工具把运镜写进提示词，然后抽卡。AgentV 先把场景变成 3D 空间，机位、焦距、路径都是你定的数值。</p>
+  <div class="cam rv">
+    <div>
+      <div class="vf br" id="vf">
+        <img id="vimg" src="agentv/shot-9.jpg" alt="示意：在场景里切换机位">
+        <span class="hud mono" style="left:18px;top:14px"><i class="rec"></i><span id="cn">CAM · 正面全景</span></span>
+        <span class="hud mono" style="right:18px;top:14px">FOV <span id="fv">64</span>°</span>
+        <i class="x"></i>
+      </div>
+      <div class="pre" id="pre">
+        <button class="on" data-t="scale(1.14)">正面全景</button>
+        <button data-t="scale(1.5) translateX(9%) rotateY(13deg)">左 45°</button>
+        <button data-t="scale(1.5) translateX(-9%) rotateY(-13deg)">右 45°</button>
+        <button data-t="scale(1.45) translateY(7%) rotateX(-12deg)">俯拍鸟瞰</button>
+        <button data-t="scale(1.5) translateY(-7%) rotateX(12deg)">低角度仰拍</button>
+        <button data-t="scale(2.5) translate(2%,-3%)">近景细节</button>
+      </div>
+      <div class="fov"><span>长焦</span><input type="range" id="fov" min="24" max="64" value="64" aria-label="视场角"><span>广角</span></div>
+      <p class="note">这是网页上的示意交互，用一张静态画面模拟换机位。产品里是真正的 3D 空间，见下方录屏。</p>
+    </div>
+    <ul class="pts">
+      <li><b>对话搭场景</b><span>用自然语言描述想要的空间，边聊边改。</span></li>
+      <li><b>陈设不会变</b><span>换机位时，货架、海报、家具都留在原位。</span></li>
+      <li><b>白模先定</b><span>去掉颜色只看形体，方向定了再出图，后面少返工。</span></li>
+    </ul>
+  </div>
+  <div class="real rv">
+    <div><div class="mono ac" style="margin-bottom:14px">真实录屏</div><h3>场景不是一张图，<br>是能走进去的空间</h3><p class="mute" style="margin:14px 0 0">在空间里放下摄影机，直接看到取景框；满意了，再让模型按这个机位出画面。</p></div>
+    <div class="br"><video src="media/camera.mp4" poster="media/camera.jpg" muted loop playsinline preload="none" class="lazy"></video></div>
+  </div>
+</section>
+
+<section id="same" class="w">
+  <div class="k rv"><i></i><span class="mono ac">02 不跑偏 · 空间真实感</span></div>
+  <h2 class="rv">一次设定，<br>全剧是同一个人</h2>
+  <p class="lead rv">角色和场景只设定一次。点一下换情绪：脸没有变。</p>
+  <div class="con rv">
+    <div>
+      <div class="face br" id="face" role="img" aria-label="同一角色的六种情绪"></div>
+      <div class="emo" id="emo"><button class="on">平静</button><button>开心</button><button>惊讶</button><button>生气</button><button>难过</button><button>害羞</button></div>
+    </div>
+    <div class="sheet"><div class="br"><img src="agentv/shot-10.jpg" loading="lazy" alt="一个角色的整套资产包"></div><p class="note">一个角色，一整套资产包。换装、特写、道具镜头直接调用，不用重新画。</p></div>
+  </div>
+  <div class="vs rv">
+    <div class="r h"><div></div><div>提示词直出</div><div>AgentV</div></div>
+    <div class="r"><div>运镜</div><div>写进提示词，靠运气</div><div>在空间里摆机位、调焦距</div></div>
+    <div class="r"><div>一致性</div><div>每次重新生成，容易跑偏</div><div>场景与角色资产全剧共用</div></div>
+    <div class="r"><div>修改</div><div>改一处，整条重新抽</div><div>改一句台词，只重做受影响的镜头</div></div>
+    <div class="r"><div>交付</div><div>一段段素材，自己拼接</div><div>自动排时间线，配音配乐，直接成片</div></div>
+  </div>
+</section>
+
+<section id="engine">
+  <div class="w">
+    <div class="k rv"><i></i><span class="mono ac">03 TokenFly 引擎 · 速度</span></div>
+    <h2 class="rv">产品敢这么承诺，<br>是因为引擎跟得上</h2>
+    <p class="lead rv">AgentV 是导演台，TokenFly 是它脚下的推理引擎：从零自研，不依赖现成的推理框架，跑在 8 张消费级显卡上。</p>
+    <div class="map rv">
+      <div class="r"><div>镜头听导演的</div><div>视频模型不理解空间</div><div><b>世界模型</b>　对话搭建 3D 空间</div></div>
+      <div class="r"><div>改完马上看到</div><div>330 亿参数模型，单卡要分钟级</div><div><b>TokenFly 推理优化</b>　约 5 秒出片</div></div>
+      <div class="r"><div>一键出整季</div><div>多智能体 Token 消耗约 15×</div><div><b>Telos 运行时</b>　会话成本 −92.3%</div></div>
+      <div class="r"><div>拍得起</div><div>托管 API 一条 $0.05–0.52</div><div><b>EryFlow 全栈</b>　¥0.02–0.03（估算）</div></div>
+    </div>
+  </div>
+  <div class="scr" id="scr">
+    <div class="pin"><div class="w" style="width:100%">
+      <div class="mono mute" style="margin-bottom:10px">交付一条 5.17 秒成片要等多久 · 向下滚动</div>
+      <div class="big num"><span id="bn">226.2</span><small>秒</small></div>
+      <div class="meter"><i id="mt"></i></div>
+      <div class="sg">
+        <div>
+          <div class="stg" id="stg">
+            <div class="on"><h3>起点：将近 4 分钟</h3><p>单张 RTX 5090、49 步完整模式。330 亿参数的音视频模型，改一句台词，创作只能排队。</p></div>
+            <div><h3>并行</h3><p>4 张消费级显卡分工去噪，显卡之间没有高端互连，照样把一个请求拆开加速。</p></div>
+            <div><h3>少走几步</h3><p>让模型学会跨更大的步子：49 步降到 4 步，用的是开源加速 LoRA。</p></div>
+            <div><h3>再加四张卡</h3><p>8 张卡分布在两个内存域，一组在算，下一组的数据已经在路上。</p></div>
+            <div><h3>上线：约 5 秒出片</h3><p>7 张卡去噪、1 张卡发布，解码和封装全链路打通。生成 5.23 秒，含封装的完整请求 6.96 秒。</p></div>
+          </div>
+          <div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+          <div class="xn" id="xn"></div>
+        </div>
+        <div>
+          <div class="pipe" id="pipe"><span>文本编码</span><span>重复去噪</span><span>画面解码</span><span>封装成片</span></div>
+          <p class="note" style="margin-top:16px">一次生成的四段路。每一步点亮它动过的环节。</p>
+        </div>
+      </div>
+    </div></div>
+  </div>
+  <div class="w">
+    <h3 class="rv" style="font-size:34px;margin-top:30px">四把钥匙</h3>
+    <div class="after rv">
+      <div><b>少算 · 模型计算重构</b><span>压缩权重直接参与计算，只在重要区域精算。</span><em>1.37× · 2.62×</em></div>
+      <div><b>并行 · 异构资源协同</b><span>没有高端互连的消费级显卡，照样多卡加速。</span><em>文本编码 31.38 → 1.08 秒</em></div>
+      <div><b>少等 · 时空调度</b><span>计算和传输同时进行，输出逐位一致。</span><em>每次前向 −7.0%</em></div>
+      <div><b>少搬 · 全链路优化</b><span>解码分块并行，硬件编码封装。</span><em>封装 9.46 → 2.01 秒</em></div>
+    </div>
+    <h3 class="rv" style="font-size:34px;margin-top:80px">同一组提示词，快约 3 倍</h3>
+    <div class="bm rv" id="bm">
+      <div class="r t"><span>TokenFly · 3 步 · 7 卡</span><div><i data-w="9.8"></i></div><b class="num">9.19–11.73</b></div>
+      <div class="r"><span>SGLang · 3 步 · 4 卡</span><div><i data-w="26.4"></i></div><b class="num">29.65–31.74</b></div>
+      <div class="r"><span>SGLang · 20 步 · 4 卡</span><div><i data-w="97.4"></i></div><b class="num">114.9–116.9</b></div>
+    </div>
+    <p class="note rv">客户端端到端耗时（秒），1280×720、124 帧，6 条提示词，2026 年 10 月 14 日。TokenFly 用 NVFP4 精度，SGLang 用 BF16 精度，显卡数不同。</p>
+    <div class="anis rv"><span class="mono mute">原理动画</span><a href="assets/feature-amdahl.svg">先找瓶颈</a><a href="assets/feature-multigpu.svg">多卡协作</a><a href="assets/feature-fewstep.svg">少算几步</a></div>
+  </div>
+</section>
+
+<section id="rsi" class="w">
+  <div class="k rv"><i></i><span class="mono ac">04 自演进 · 零隙智能 × 奇点逃逸</span></div>
+  <h2 class="rv">这些提速，<br>不是人一项项调出来的</h2>
+  <p class="lead rv">零隙智能与奇点逃逸共建了一套递归自我改进（RSI）系统。智能体一轮轮提出优化，独立评审逐条把关，只有通过检验的代码和经验才传给下一轮。这是一台会自己变快的引擎。</p>
+  <div class="loop rv" id="loop">
+    <div class="on"><u>01</u><b>审定验收命题树</b><span>奇点逃逸</span></div>
+    <div><u>02</u><b>提出并实现</b><span>双方共建</span></div>
+    <div><u>03</u><b>独立评审</b><span>奇点逃逸</span></div>
+    <div><u>04</u><b>存档与继承</b><span>奇点逃逸</span></div>
+    <div><u>05</u><b>人工关卡</b><span>发布之前</span></div>
+  </div>
+  <p class="ld rv" id="ld">优化开始前，先把“什么算改好了”拆成可以逐条判定的条件，审定后本轮不变。</p>
+  <p class="pull rv">智能体可以改代码，<br>但不能改<span class="ac">“什么算改好了”</span>。</p>
+  <h3 class="rv" style="font-size:34px;margin-top:80px">更快但不对的，一条都不留</h3>
+  <div class="rej rv" id="rej">
+    <div><b>快 7 倍的融合算子</b><span>音频与参考的相似度只有 0.859</span><i>退回</i></div>
+    <div><b>编译版解码器</b><span>输出 148 帧，应为 124 帧</span><i>退回</i></div>
+    <div><b>常驻显存方案</b><span>第二个请求显存溢出</span><i>退回</i></div>
+    <div><b>8 步加速 LoRA</b><span>画质指标 patch-FID 高达 31–48</span><i>退回</i></div>
+  </div>
+  <p class="note rv">如果只看速度，它们都会被当成“更好”的版本。被退回的条件和证据同样留档，后面的轮次不会在同一条路上反复试错。</p>
+  <div class="st3 q rv">
+    <div><b class="num">8.8<i class="sm">×10⁻⁷</i></b><span>与官方实现的最大数值偏差，前 4 个 Transformer 块</span></div>
+    <div><b class="num">0.95</b><span>运动保留，修复量化缩放并加入校正后（原为 0.55）</span></div>
+    <div><b class="num">3<i class="sm">个</i></b><span>让模型“无视提示词”的缺陷被定位并修复</span></div>
+  </div>
+  <p class="note rv">线上 3 步模式使用开源 3 步 LoRA，改变了生成方式，不声称与 20 步画质等价。需要最高画质时可切换 49 步完整模式，单卡即可运行。</p>
+</section>
+
+<section id="api" class="w">
+  <div class="k rv"><i></i><span class="mono ac">05 Token 平台 · 价格</span></div>
+  <h2 class="rv">同一台引擎，<br>也开放给你的代码</h2>
+  <p class="lead rv">不拍片也能用上它。TokenFly 是从算子做起的 Token 平台：一个接口调用文本、图像、语音和视频模型。让 AgentV 快起来的那套自演进算子优化，在这里变成更低的 Token 价格。</p>
+  <div class="st3 rv">
+    <div><b class="num" id="sN">153</b><span>可调用模型</span></div>
+    <div><b class="num" id="sP">23</b><span>模型厂商</span></div>
+    <div><b class="num"><span id="sD">2.6</span><i class="sm">折</i></b><span>低至，对比厂商官方价</span></div>
+  </div>
+  <div class="pb br rv" id="pb">
+    <div class="pbh"><span class="mono">热门模型 · 输出价 / 百万 tokens</span><span class="mono" id="pbs">读取实时价格…</span></div>
+    <div id="pbr"></div>
+    <div class="pbf"><span><i class="lg a"></i>TokenFly 价</span><span><i class="lg"></i>厂商官方价</span><a href="https://tokenfly.chat/" class="ac">全部模型价格 →</a></div>
+  </div>
+  <div class="mq rv" aria-hidden="true"><div id="mqi"></div></div>
+  <div class="term br rv">
+    <div class="tb"><span class="mono">Claude Code · 一行命令，切换到 TokenFly</span><button id="cp">复制</button></div>
+    <pre><span class="ac">$</span> <code id="cmd">eval "$(curl -fsSL 'https://tokenfly.chat/switch/claude?model=glm-5.3')"</code><i class="cur"></i></pre>
+    <div class="mch" id="mch"></div>
+    <p class="note" style="margin:0;padding:0 20px 18px">粘贴到终端回车，输入 API Key 后运行 claude。适用于 macOS / Linux。Codex 的切换命令和可选模型见官网。</p>
+  </div>
+  <div class="after rv" style="margin-top:44px">
+    <div><b>Token 平台</b><span>按用量计费，随充随用。工具调用、流式和 JSON 模式照常使用。适合开发者和技术团队。</span></div>
+    <div><b>企业合同</b><span>用承诺量换专属价格和额度，把 API 一键导入自己的平台。适合用量大的企业和平台。</span></div>
+    <div><b>私有化与推理优化</b><span>部署到你的环境，或为你的模型和硬件做算子优化。适合数据敏感企业、算力中心、服务器厂商。</span></div>
+  </div>
+  <p class="rv" style="margin-top:34px"><a class="btn p" href="https://tokenfly.chat/">查看模型价格</a> <a class="btn g" href="https://tokenfly.chat/">获取 API Key</a></p>
+  <p class="note rv">价格与模型数量从 tokenfly.chat 实时读取，匿名访客可见的国内模型、OpenAI 格式接口、按官网汇率折算人民币；读取失败时显示 2026 年 11 月 22 日的快照。以官网为准。</p>
+</section>
+
+<section id="cost" class="w">
+  <div class="k rv"><i></i><span class="mono ac">06 算账 · 价格</span></div>
+  <h2 class="rv">拍一部剧，<br>算力要花多少</h2>
+  <p class="lead rv">拖一拖，换成你自己的剧。</p>
+  <div class="calc rv">
+    <div>
+      <div class="sl"><label>集数<b id="v1">80</b></label><input type="range" id="s1" min="1" max="200" value="80"></div>
+      <div class="sl"><label>每集镜头数<b id="v2">40</b></label><input type="range" id="s2" min="5" max="120" value="40"></div>
+      <div class="sl"><label>每个镜头平均生成次数<b id="v3">2</b></label><input type="range" id="s3" min="1" max="6" value="2"></div>
+    </div>
+    <div class="out br">
+      <div class="a"><div class="mono mute">AgentV 算力成本（估算）</div><div class="num" id="o1">¥128–192</div></div>
+      <div class="b"><div class="mono">同样条数，托管 API 起步价</div><div class="num" id="o2">¥2,304–23,962</div></div>
+      <div class="c" id="o3"></div>
+    </div>
+  </div>
+  <p class="note rv" style="margin-top:22px">按单条 5 秒视频 ¥0.02–0.03 估算（8×RTX 5090，硬件 3 年摊销，电价约 1 元/度，不含人力与运营）。托管 API 按公开起步价 $0.05–0.52 一条、汇率 7.2 折算。一台这样的服务器硬件投入约 15–20 万元，单机日产约 1.2 万条；整机可以搬进客户机房，素材与成片不出内网。只算算力，不是报价。</p>
+</section>
+
+<div class="fin w rv">
+  <div class="mono ac" style="margin-bottom:18px">拍得起 · 等得起 · 镜头是真的</div>
+  <h2>你描述世界，<br><span class="ac">AgentV 拍成电影</span></h2>
+  <p class="lead" style="margin:22px auto 34px">两三分钱一条，约 5 秒出片，每个镜头都拍在真实的 3D 空间里。拍片走 AgentV，写代码走 TokenFly。</p>
+  <a class="btn p" href="https://poping.art/agentv">用 AgentV 拍片</a> <a class="btn g" href="https://tokenfly.chat/">用 TokenFly API</a>
+</div>
+</main>
+
+<footer><div class="w">
+  AgentV · TokenFly 旗下品牌 · 北京零隙智能科技有限公司 · <a href="https://tokenfly.chat/" style="color:#c9d2cc">tokenfly.chat</a> · <a href="https://poping.art/agentv" style="color:#c9d2cc">poping.art/agentv</a><br>
+  数据口径：TokenFly 实验记录与线上日志（2026 年 9–10 月），8×RTX 5090，显卡之间无 NVLink。226.2 秒、91.1 秒为 49 步完整模式；16 秒、11.9 秒为 4 步；6.96 秒为线上 3 步配置的完整请求中位数（n=13），其中 1344×768 生成 5.23 秒；1280×720 生成 4.83 秒（n=152）。4 步与 3 步模式使用开源加速 LoRA，画质与完整模式不等价。成本为估算。
+</div></footer>
+
+<script>
+const $=id=>document.getElementById(id),rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+addEventListener('scroll',()=>$('nav').classList.toggle('s',scrollY>40),{passive:true});
+if(rm){$('hv').removeAttribute('autoplay');$('hv').pause()}
+// reveal + lazy video
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:0,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(e=>io.observe(e));
+const vo=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting&&!rm)v.play().catch(()=>{});else v.pause()}),{threshold:.3});
+document.querySelectorAll('video.lazy').forEach(v=>vo.observe(v));
+// race: real-time
+(function(){const P=5.17,G=4.83,C=8;let t0=performance.now();
+function f(n){let t=((n-t0)/1000)%C;const a=Math.min(t,P),b=Math.min(t,G);
+ $('r1').textContent=a.toFixed(2);$('r2').textContent=b.toFixed(2);
+ $('b1').style.width=a/P*100+'%';$('b2').style.width=b/P*100+'%';
+ $('vd').classList.toggle('on',t>=G);requestAnimationFrame(f)}
+if(rm){$('r1').textContent='5.17';$('r2').textContent='4.83';$('b1').style.width='100%';$('b2').style.width=G/P*100+'%';$('vd').classList.add('on')}else requestAnimationFrame(f)})();
+// camera
+(function(){const im=$('vimg'),vf=$('vf');let base='scale(1.14)',fz=1,mx=0,my=0;
+function ap(){im.style.transform=`rotateY(${mx*4}deg) rotateX(${-my*4}deg) scale(${fz}) ${base}`}
+document.querySelectorAll('#pre button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#pre button').forEach(x=>x.classList.remove('on'));b.classList.add('on');base=b.dataset.t;$('cn').textContent='CAM · '+b.textContent;ap()});
+$('fov').oninput=e=>{const v=+e.target.value;$('fv').textContent=v;fz=Math.tan(32*Math.PI/180)/Math.tan(v/2*Math.PI/180);ap()};
+vf.onmousemove=e=>{const r=vf.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5;ap()};
+vf.onmouseleave=()=>{mx=my=0;ap()};ap()})();
+// emotions
+document.querySelectorAll('#emo button').forEach((b,i)=>b.onclick=()=>{document.querySelectorAll('#emo button').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('face').style.backgroundPosition=`${(i%3)*50}% ${Math.floor(i/3)*100}%`});
+// scrolly
+(function(){const V=[226.2,91.1,16,11.9,6.96],X=['1 卡 · 49 步 · 完整流水线稳态','4 卡 · 49 步 · 2.5×','4 卡 · 4 步 · 14.1×','8 卡 · 4 步 · 19.0×','7 卡 · 3 步 · 线上中位数 n=13 · 32.5×'],
+PI=[[],[1],[1],[1],[0,2,3]],sc=$('scr'),st=[...$('stg').children],ds=[...$('dots').children],pp=[...$('pipe').children];let last=-1;
+function u(){const r=sc.getBoundingClientRect(),p=Math.max(0,Math.min(1,-r.top/(sc.offsetHeight-innerHeight))),s=p*(V.length-1)*1.08,i=Math.min(V.length-1,Math.floor(s)),fr=Math.min(1,(s-i)/.55),j=Math.min(V.length-1,i+1);
+ const v=Math.exp(Math.log(V[i])+(Math.log(V[j])-Math.log(V[i]))*(i===j?0:fr));
+ $('bn').textContent=v>=10?v.toFixed(1):v.toFixed(2);
+ $('mt').style.width=Math.max(1.2,(Math.log(v)-Math.log(5))/(Math.log(226.2)-Math.log(5))*100)+'%';
+ const a=fr>=1?j:i;if(a!==last){last=a;st.forEach((e,k)=>e.classList.toggle('on',k===a));ds.forEach((e,k)=>e.classList.toggle('on',k<=a));pp.forEach((e,k)=>e.classList.toggle('on',PI[a].includes(k)));$('xn').textContent=X[a]}}
+addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u()})();
+$("cp").onclick=()=>{const t=$("cmd").textContent,b=$("cp");(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>b.textContent="已复制",()=>{const r=document.createRange();r.selectNode($("cmd"));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent="已选中"});setTimeout(()=>b.textContent="复制",1600)};
+// benchmark bars, rejected stamps, RSI loop
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){document.querySelectorAll('#bm i').forEach(i=>i.style.width=i.dataset.w+'%');o.disconnect()}},{threshold:.3}).observe($('bm'));
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){$('rej').classList.add('go');o.disconnect()}},{threshold:.4}).observe($('rej'));
+(function(){const T=['优化开始前，先把“什么算改好了”拆成可以逐条判定的条件，审定后本轮不变。','智能体在独立工作区里，依据性能剖析结果自主选择优化方向并修改代码。','评审与提出优化的智能体分开运行，逐条核验：数值对齐、画质不退化、输出完整、运行稳定，最后才看速度。','通过的代码和经验报告成为下一轮的起点；被退回的条件和证据同样留档。','人工评审放在发布之前，不参与优化反馈，防止系统“为分数而优化”。'],
+ns=[...$('loop').children];let i=0,tm;function go(k){i=k;ns.forEach((n,j)=>n.classList.toggle('on',j===k));$('ld').textContent=T[k];clearTimeout(tm);if(!rm)tm=setTimeout(()=>go((k+1)%5),3200)}
+ns.forEach((n,k)=>n.onclick=()=>go(k));go(0)})();
+// live price board (tokenfly.chat/api/models), snapshot fallback
+(function(){const SNAP={"updated_at":1795336005459,"cny_per_usd":6.689203,"count":153,"providers":23,"max_discount_percent":74,"vendors":["Alibaba","BAAI","ByteDance","ByteDance Seed","DeepSeek","Kuaishou (Kling)","Meituan","MiniMax","Moonshot","Moonshot AI","MoonshotAI","StepFun","Tencent","Wan","Xiaomi","Z.ai","alibaba","deepseek","inclusionAI","inclusionAI (Ant Group)","inclusionai","minimax","shibing624"],"models":[{"id":"deepseek-r1","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":4.212,"list_output_per_million":5.4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"deepseek-v3","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":1.0164,"list_output_per_million":1.1,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"deepseek-v3.1","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.741,"list_output_per_million":0.95,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"deepseek-v3.2","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.481,"list_output_per_million":1.85,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":71.8}},{"id":"deepseek-v3.2-thinking","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.3276,"list_output_per_million":0.42,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"deepseek-v4-flash-vision-exp","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.6336,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":47.2}},{"id":"deepseek-v4.1-flash","provider":"DeepSeek","type":"text","featured":true,"pricing":{"output_per_million":0.156,"list_output_per_million":0.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":74}},{"id":"deepseek-v4.1-flash-1017","provider":"DeepSeek","type":"text","featured":true,"pricing":{"output_per_million":0.156,"list_output_per_million":0.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":74}},{"id":"deepseek-v4.1-flash-1017-fast","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":1.872,"list_output_per_million":2.4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"deepseek-v4.1-flash-1017-ultrafast","provider":"deepseek","type":"text","featured":false,"pricing":{"output_per_million":8.8704,"list_output_per_million":9.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"glm-4.5v","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":1.6632,"list_output_per_million":1.8,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"glm-4.7-flash","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":0.429,"list_output_per_million":0.55,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"glm-5-turbo","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":3.12,"list_output_per_million":4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"glm-5.2-fast","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":6.864,"list_output_per_million":8.8,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"glm-5.3","provider":"Z.ai","type":"text","featured":true,"pricing":{"output_per_million":1.573,"list_output_per_million":4.4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":64.3}},{"id":"glm-5.3-flash","provider":"Z.ai","type":"text","featured":true,"pricing":{"output_per_million":0.13,"list_output_per_million":0.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":73.2}},{"id":"glm-5.3-flashx","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":0.975,"list_output_per_million":1.25,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"glm-5.3-flashx-legal","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":1.155,"list_output_per_million":1.25,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"glm-5v-turbo","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":3.83664,"list_output_per_million":4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":4.1}},{"id":"hy3","provider":"Tencent","type":"text","featured":false,"pricing":{"output_per_million":0.4524,"list_output_per_million":0.58,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"hy4","provider":"Tencent","type":"text","featured":false,"pricing":{"output_per_million":0.67527,"list_output_per_million":1.2505,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":46}},{"id":"hy4-flash","provider":"Tencent","type":"text","featured":false,"pricing":{"output_per_million":0.07587,"list_output_per_million":0.1405,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":46}},{"id":"kimi-k2","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":2.20317,"list_output_per_million":2.3,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":4.2}},{"id":"kimi-k2-thinking","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":1.56,"list_output_per_million":2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"kimi-k2.5","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":1.235,"list_output_per_million":3,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":58.7}},{"id":"kimi-k2.6","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":1.69,"list_output_per_million":4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":57.8}},{"id":"kimi-k2.7-code","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":3.12,"list_output_per_million":4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"kimi-k2.7-code-highspeed","provider":"Moonshot AI","type":"text","featured":false,"pricing":{"output_per_million":7.776,"list_output_per_million":8,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":2.8}},{"id":"kimi-k3.1-pro","provider":"MoonshotAI","type":"text","featured":false,"pricing":{"output_per_million":4.8,"list_output_per_million":10,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":52}},{"id":"kimi-k3.1-pro-highspeed","provider":"Moonshot AI","type":"text","featured":false,"pricing":{"output_per_million":19.8,"list_output_per_million":20,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":1}},{"id":"ling-3.0-flash","provider":"inclusionAI (Ant Group)","type":"text","featured":false,"pricing":{"output_per_million":0.0702,"list_output_per_million":0.18,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":61}},{"id":"ling-3.0-flash-fin","provider":"inclusionAI (Ant Group)","type":"text","featured":false,"pricing":{"output_per_million":0.113652,"list_output_per_million":0.123,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"ling-3.0-flash-sante","provider":"inclusionAI (Ant Group)","type":"text","featured":false,"pricing":{"output_per_million":0.09594,"list_output_per_million":0.123,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"ling-3.0-flash-vl","provider":"inclusionAI (Ant Group)","type":"text","featured":false,"pricing":{"output_per_million":0.15768,"list_output_per_million":0.18,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":12.4}},{"id":"ling-3.1-flash","provider":"inclusionAI","type":"text","featured":false,"pricing":{"output_per_million":0.1755,"list_output_per_million":0.225,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"ling-3.1-flash-1019","provider":"inclusionai","type":"text","featured":false,"pricing":{"output_per_million":0.702,"list_output_per_million":0.9,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"longcat-2.5","provider":"Meituan","type":"text","featured":false,"pricing":{"output_per_million":1.3806,"list_output_per_million":2.95,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":53.2}},{"id":"mimo-v2.5","provider":"Xiaomi","type":"text","featured":false,"pricing":{"output_per_million":0.258161,"list_output_per_million":0.28,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.8}},{"id":"mimo-v2.6-flash","provider":"Xiaomi","type":"text","featured":false,"pricing":{"output_per_million":0.18,"list_output_per_million":0.28,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":35.7}},{"id":"mimo-v2.6-pro","provider":"Xiaomi","type":"text","featured":false,"pricing":{"output_per_million":0.768,"list_output_per_million":0.87,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":11.7}},{"id":"mimo-v2.6-pro-ultraspeed","provider":"Xiaomi","type":"text","featured":false,"pricing":{"output_per_million":8.308432,"list_output_per_million":8.7,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":4.5}},{"id":"minimax-h3","provider":"MiniMax","type":"video","featured":true,"pricing":{"output_per_million":0,"list_output_per_million":0,"media_unit_price":0.0208,"media_unit":"second","list_media_unit_price":0.08,"media_prices":{"768P":0.0208,"2K":0.0338},"list_media_prices":{"768P":0.08,"2K":0.13},"discount_percent":74}},{"id":"minimax-m2","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":0.936,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"minimax-m2.1","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":1.06089,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":11.6}},{"id":"minimax-m2.5","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":0.507,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":57.7}},{"id":"minimax-m3","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":0.612,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":48.9}},{"id":"minimax-m3.1-flash","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":0.288,"list_output_per_million":0.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":52}},{"id":"qwen-3-30b","provider":"alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.48,"list_output_per_million":0.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":4}},{"id":"qwen-3-32b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.3224,"list_output_per_million":0.64,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":49.3}},{"id":"qwen-mt-plus","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":5.7486,"list_output_per_million":7.37,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3-30b-a3b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.486,"list_output_per_million":0.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":2.8}},{"id":"qwen3-coder-next","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":1.35,"list_output_per_million":1.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":9.4}},{"id":"qwen3-next-80b-a3b-instruct","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.936,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3-vl-235b-a22b-instruct","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.96,"list_output_per_million":1.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":40.5}},{"id":"qwen3-vl-instruct","provider":"alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.942,"list_output_per_million":1.9,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":48.8}},{"id":"qwen3.5-397b-a17b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":3.4992,"list_output_per_million":3.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":2.8}},{"id":"qwen3.5-flash","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.312,"list_output_per_million":0.4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.5-plus","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":1.872,"list_output_per_million":2.4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.6-plus","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":2.064031,"list_output_per_million":3,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":31.2}},{"id":"qwen3.7-flash","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.1014,"list_output_per_million":0.13,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.7-max","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":5.85,"list_output_per_million":7.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.7-plus","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":1.489015,"list_output_per_million":1.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":6.9}},{"id":"qwen3.8-2.4t-a95b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":4.697497,"list_output_per_million":6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":21.7}},{"id":"qwen3.8-27b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.78,"list_output_per_million":3,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":74}},{"id":"qwen3.8-flash","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.264,"list_output_per_million":0.47,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":43.8}},{"id":"qwen3.8-max-0902","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":4.68,"list_output_per_million":6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.8-max-prime","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":10.448244,"list_output_per_million":12,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":12.9}},{"id":"qwen3.8-omni-flash","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.282,"list_output_per_million":0.47,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":40}},{"id":"qwen4-max","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":3.51,"list_output_per_million":4.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"seed-1.8","provider":"ByteDance","type":"text","featured":false,"pricing":{"output_per_million":1.56,"list_output_per_million":2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"seed-2.1-turbo","provider":"ByteDance Seed","type":"text","featured":false,"pricing":{"output_per_million":2.331912,"list_output_per_million":2.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":6.7}},{"id":"step-5-preview","provider":"StepFun","type":"text","featured":false,"pricing":{"output_per_million":0.884,"list_output_per_million":2.7,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":67.3}},{"id":"glm-5.2","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":1.573,"list_output_per_million":5.75,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":72.6}},{"id":"kimi-k3","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":7.644,"list_output_per_million":15,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":49}},{"id":"deepseek-v4-flash","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.156,"list_output_per_million":0.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":74}},{"id":"minimax-m2.7","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":1.1088,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"deepseek-v4-pro","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":1.82952,"list_output_per_million":1.98,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"glm-4.5","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":1.6104,"list_output_per_million":2.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":26.8}},{"id":"glm-4.5-air","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":0.853978,"list_output_per_million":1.1,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22.4}},{"id":"glm-4.6","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":1.452,"list_output_per_million":2.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":34}},{"id":"glm-4.7","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":2.00525,"list_output_per_million":4.15,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":52.3}},{"id":"glm-5","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":2.112,"list_output_per_million":3.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":34}},{"id":"glm-5.1","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":2.739,"list_output_per_million":4.15,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":34}},{"id":"deepseek-v4-flash-0731","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.1716,"list_output_per_million":0.66,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":73.1}},{"id":"qwen3.5-35b-a3b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":1.56,"list_output_per_million":2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.6-27b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":2.808,"list_output_per_million":3.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.6-35b-a3b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":1.02375,"list_output_per_million":2.25,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":55.4}},{"id":"qwen3.8-max","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":4.32,"list_output_per_million":6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":28}},{"id":"deepseek-v4-pro-0813","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.806,"list_output_per_million":1.98,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":58.8}}]};
+const esc=t=>String(t).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';'),VN={'z.ai':'GLM','alibaba':'Qwen','moonshot':'Kimi','moonshot ai':'Kimi','moonshotai':'Kimi','bytedance':'Seed','bytedance seed':'Seed','tencent':'混元','xiaomi':'MiMo','stepfun':'Step','kuaishou (kling)':'Kling','inclusionai':'Ling','inclusionai (ant group)':'Ling','meituan':'LongCat','deepseek':'DeepSeek','minimax':'MiniMax','baai':'BGE','wan':'Wan'};
+const fam=p=>VN[String(p||'').toLowerCase()]||p;
+function price(m){const p=m.pricing,media=p.media_unit_price!=null,tier=media?Object.entries(p.media_prices||{}).sort((a,b)=>a[1]-b[1])[0]?.[0]:null;
+ const now=tier?p.media_prices[tier]:media?p.media_unit_price:p.output_per_million,list=tier?p.list_media_prices?.[tier]:media?p.list_media_unit_price:p.list_output_per_million;
+ return{now,list,tier,unit:media?(p.media_unit==='second'?'秒':'次'):''}}
+function pick(ms){const by=(a,b)=>(b.pricing.discount_percent||0)-(a.pricing.discount_percent||0)||a.id.localeCompare(b.id);
+ const out=ms.filter(m=>m.featured).sort(by).slice(0,5),seen=new Set(out.map(m=>fam(m.provider)));
+ for(const m of ms.filter(m=>m.type==='text'&&m.pricing.discount_percent&&m.pricing.list_output_per_million).sort(by)){if(out.length>=8)break;const f=fam(m.provider);if(seen.has(f))continue;seen.add(f);out.push(m)}
+ return out}
+function draw(d,live){const rate=d.cny_per_usd||SNAP.cny_per_usd,ms=d.models,rows=pick(ms),yen=v=>'¥'+(v*rate).toFixed(2);
+ const n=live?ms.length:d.count,pv=live?new Set(ms.map(m=>m.provider).filter(Boolean)).size:d.providers,dc=ms.map(m=>m.pricing.discount_percent).filter(x=>x!=null),mx=live?(dc.length?Math.max(...dc):null):d.max_discount_percent;
+ $('sN').textContent=n;$('sP').textContent=pv;if(mx!=null)$('sD').textContent=Math.round(100-mx)/10;
+ $('pbr').innerHTML=rows.map(m=>{const x=price(m);if(!(x.now>0))return'';const sh=x.list>0?Math.min(100,x.now/x.list*100):100,sv=x.tier?(x.list>0?100*(1-x.now/x.list):0):m.pricing.discount_percent,off=sv?Math.round(100-sv)/10+' 折':'';
+  return`<div class="pr"><div class="nm">${esc(m.id)}${off?`<em>${esc(off)}</em>`:''}${m.id==='minimax-h3'?'<em class="h">AgentV 用的就是它</em>':''}</div><div class="bar"><i data-w="${sh.toFixed(1)}"></i></div><div class="px"><b>${yen(x.now)}</b><u>${x.unit?'/'+x.unit:''}${x.tier?' · '+esc(x.tier):''}</u>${x.list?`<s>${yen(x.list)}</s>`:''}</div></div>`}).join('');
+ const t=new Date(d.updated_at);$('pbs').innerHTML=live?`<span class="ac">● 实时</span> · 更新于 ${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}`:'快照 · 2026-11-22';
+ const go=()=>document.querySelectorAll('#pbr .bar i').forEach(i=>i.style.width=i.dataset.w+'%');
+ new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){setTimeout(go,150);o.disconnect()}},{threshold:.2}).observe($('pb'));
+ const vs=[...new Set((live?ms.map(m=>m.provider):d.vendors).filter(Boolean).map(fam))];$('mqi').innerHTML=[...vs,...vs].map(v=>`<span>${esc(v)}</span>`).join('');
+ const tx=[...new Set(['glm-5.3',...rows.filter(m=>m.type==='text').map(m=>m.id)])].slice(0,6);
+ $('mch').innerHTML=tx.map((id,i)=>`<button class="${i?'':'on'}">${esc(id)}</button>`).join('');
+ [...$('mch').children].forEach(b=>b.onclick=()=>{[...$('mch').children].forEach(x=>x.classList.remove('on'));b.classList.add('on');$('cmd').textContent=`eval "$(curl -fsSL 'https://tokenfly.chat/switch/claude?model=${encodeURIComponent(b.textContent)}')"`})}
+draw(SNAP,false);
+const ac=new AbortController();setTimeout(()=>ac.abort(),8000);
+fetch('https://tokenfly.chat/api/models',{signal:ac.signal,credentials:'omit'}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{if(d&&Array.isArray(d.models)&&d.models.length)draw(d,true)}).catch(()=>{})})();
+// calculator
+(function(){const f=n=>Math.round(n).toLocaleString('en-US');
+function c(){const a=+$('s1').value,b=+$('s2').value,k=+$('s3').value,n=a*b*k;$('v1').textContent=a;$('v2').textContent=b;$('v3').textContent=k;
+ $('o1').textContent='¥'+f(n*.02)+'–'+f(n*.03);$('o2').textContent='¥'+f(n*.05*7.2)+'–'+f(n*.52*7.2);
+ const h=n*6.96/3600;$('o3').textContent=`共 ${f(n)} 条 5 秒镜头。单机串行约 ${h<1?(h*60).toFixed(0)+' 分钟':h.toFixed(1)+' 小时'}出完（按线上中位数 6.96 秒一条）。`}
+['s1','s2','s3'].forEach(i=>$(i).oninput=c);c()})();
+</script>
+</body>
+</html>
