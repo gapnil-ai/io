@@ -121,22 +121,23 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border:0;border-radiu
 .map .r>div{padding:18px 14px 18px 0}.map .r>div:first-child{font-family:Smiley;font-size:22px}
 .map .r>div:nth-child(2){color:var(--mute);font-size:15px}.map b{color:var(--ac);font-weight:600}
 @media(max-width:700px){.map .r{grid-template-columns:1fr}.map .r>div{padding:4px 0}.map .r{padding:14px 0}}
-.scr{height:520vh;position:relative;margin-top:90px}
-.pin{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.scr{position:relative;margin-top:90px}
+.pin{padding:20px 0 10px;overflow:hidden}
 .big{font-size:clamp(110px,24vw,330px);line-height:.82;color:var(--ac);letter-spacing:-.01em;white-space:nowrap}
 .big small{font-family:Smiley;font-size:.2em;color:var(--fg);margin-left:.15em}
 .meter{height:6px;background:#ffffff10;margin:34px 0 30px;position:relative}
 .meter i{position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--ac);box-shadow:0 0 22px var(--ac)}
 .sg{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:start}
 @media(max-width:900px){.sg{grid-template-columns:1fr;gap:20px}}
-.stg{position:relative;min-height:150px}
+.stg{position:relative;min-height:170px}
 .stg div{position:absolute;inset:0;opacity:0;transform:translateY(14px);transition:.45s;pointer-events:none}
 .stg div.on{opacity:1;transform:none}
 .stg h3{font-size:clamp(28px,3.6vw,46px);line-height:1.1}.stg p{color:var(--mute);margin:10px 0 0;max-width:480px}
 .pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
 .pipe span{border:1px solid var(--line);padding:16px 8px;text-align:center;font-size:14px;color:var(--mute);transition:.4s}
 .pipe span.on{border-color:var(--ac);color:var(--ac);background:var(--ac2);box-shadow:0 0 30px var(--ac2)}
-.dots{display:flex;gap:8px;margin-top:22px}.dots i{flex:1;height:2px;background:var(--line);transition:.3s}.dots i.on{background:var(--ac)}
+.dots{display:flex;gap:8px;margin-top:14px}.dots i{flex:1;height:26px;cursor:pointer;position:relative}.dots i:before{content:"";position:absolute;left:0;right:0;top:12px;height:2px;background:var(--line);transition:.3s}.dots i.on:before{background:var(--ac)}.dots i:hover:before{height:4px;top:11px;background:var(--ac)}
+.ctl{display:flex;gap:10px;margin-top:14px}.ctl button{background:none;border:1px solid var(--line);color:#c9d2cc;font:inherit;font-size:13px;padding:6px 14px;border-radius:99px;cursor:pointer}.ctl button:hover{border-color:var(--ac);color:var(--ac)}
 .xn{font-size:13px;color:var(--mute);margin-top:14px;min-height:22px}
 .after{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0;border-top:1px solid var(--line);margin-top:20px}
 .after div{padding:26px 22px 26px 0;border-bottom:1px solid var(--line)}
@@ -258,7 +259,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--mute);fo
   </div>
   <div class="scr" id="scr">
     <div class="pin"><div class="w" style="width:100%">
-      <div class="mono mute" style="margin-bottom:10px"><x-e>How long you wait for a 5.17-second clip · scroll down</x-e><x-z>交付一条 5.17 秒成片要等多久 · 向下滚动</x-z></div>
+      <div class="mono mute" style="margin-bottom:10px"><x-e>How long you wait for a 5.17-second clip · plays by itself</x-e><x-z>交付一条 5.17 秒成片要等多久 · 自动播放</x-z></div>
       <div class="big num"><span id="bn">226.2</span><small><x-e>s</x-e><x-z>秒</x-z></small></div>
       <div class="meter"><i id="mt"></i></div>
       <div class="sg">
@@ -272,6 +273,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--mute);fo
           </div>
           <div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
           <div class="xn" id="xn"></div>
+          <div class="ctl"><button id="sp"><x-e>‹ Back</x-e><x-z>‹ 上一步</x-z></button><button id="sn"><x-e>Next ›</x-e><x-z>下一步 ›</x-z></button><button id="sr"><x-e>Replay</x-e><x-z>重播</x-z></button></div>
         </div>
         <div>
           <div class="pipe" id="pipe"><span><x-e>Text encoding</x-e><x-z>文本编码</x-z></span><span><x-e>Iterative denoising</x-e><x-z>重复去噪</x-z></span><span><x-e>Frame decoding</x-e><x-z>画面解码</x-z></span><span><x-e>Packaging</x-e><x-z>封装成片</x-z></span></div>
@@ -507,13 +509,18 @@ vf.onmouseleave=()=>{mx=my=0;ap()};ap()})();
 document.querySelectorAll('#emo button').forEach((b,i)=>b.onclick=()=>{document.querySelectorAll('#emo button').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('face').style.backgroundPosition=`${(i%3)*50}% ${Math.floor(i/3)*100}%`});
 // scrolly
 (function(){const V=[226.2,91.1,16,11.9,6.96],X=ZH?['1 卡 · 49 步 · 完整流水线稳态','4 卡 · 49 步 · 2.5×','4 卡 · 4 步 · 14.1×','8 卡 · 4 步 · 19.0×','7 卡 · 3 步 · 线上中位数 n=13 · 32.5×']:['1 GPU · 49 steps · full pipeline, steady state','4 GPUs · 49 steps · 2.5×','4 GPUs · 4 steps · 14.1×','8 GPUs · 4 steps · 19.0×','7 GPUs · 3 steps · production median n=13 · 32.5×'],
-PI=[[],[1],[1],[1],[0,2,3]],sc=$('scr'),st=[...$('stg').children],ds=[...$('dots').children],pp=[...$('pipe').children];let last=-1;
-function u(){const r=sc.getBoundingClientRect(),p=Math.max(0,Math.min(1,-r.top/(sc.offsetHeight-innerHeight))),s=p*(V.length-1)*1.08,i=Math.min(V.length-1,Math.floor(s)),fr=Math.min(1,(s-i)/.55),j=Math.min(V.length-1,i+1);
- const v=Math.exp(Math.log(V[i])+(Math.log(V[j])-Math.log(V[i]))*(i===j?0:fr));
- $('bn').textContent=v>=10?v.toFixed(1):v.toFixed(2);
- $('mt').style.width=Math.max(1.2,(Math.log(v)-Math.log(5))/(Math.log(226.2)-Math.log(5))*100)+'%';
- const a=fr>=1?j:i;if(a!==last){last=a;st.forEach((e,k)=>e.classList.toggle('on',k===a));ds.forEach((e,k)=>e.classList.toggle('on',k<=a));pp.forEach((e,k)=>e.classList.toggle('on',PI[a].includes(k)));$('xn').textContent=X[a]}}
-addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u()})();
+PI=[[],[1],[1],[1],[0,2,3]],st=[...$('stg').children],ds=[...$('dots').children],pp=[...$('pipe').children];let cur=0,shown=V[0],raf=0,tm=0,auto=false;
+function num(v){shown=v;$('bn').textContent=v>=10?v.toFixed(1):v.toFixed(2);$('mt').style.width=Math.max(1.2,(Math.log(v)-Math.log(5))/(Math.log(226.2)-Math.log(5))*100)+'%'}
+function set(a,jump){cur=a;st.forEach((e,k)=>e.classList.toggle('on',k===a));ds.forEach((e,k)=>e.classList.toggle('on',k<=a));pp.forEach((e,k)=>e.classList.toggle('on',PI[a].includes(k)));$('xn').textContent=X[a];
+ cancelAnimationFrame(raf);const from=shown,to=V[a];if(jump||rm||from===to){num(to);return}
+ const t0=performance.now(),D=900;(function f(n){const p=Math.min(1,(n-t0)/D),e=1-Math.pow(1-p,3);num(Math.exp(Math.log(from)+(Math.log(to)-Math.log(from))*e));if(p<1)raf=requestAnimationFrame(f)})(t0)}
+function play(){clearTimeout(tm);if(!auto||rm)return;tm=setTimeout(()=>{if(cur<V.length-1){set(cur+1);play()}else auto=false},2600)}
+function stop(){auto=false;clearTimeout(tm)}
+ds.forEach((d,k)=>d.onclick=()=>{stop();set(k)});
+$('sp').onclick=()=>{stop();set(Math.max(0,cur-1))};$('sn').onclick=()=>{stop();set(Math.min(V.length-1,cur+1))};
+$('sr').onclick=()=>{set(0,true);auto=true;play()};
+set(rm?V.length-1:0,true);
+if(!rm)new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){auto=true;play();o.disconnect()}},{threshold:.5}).observe($('pipe'))})();
 $("cp").onclick=()=>{const t=$("cmd").textContent,b=$("cp");(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>b.textContent=L("Copied","已复制"),()=>{const r=document.createRange();r.selectNode($("cmd"));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent=L("Selected","已选中")});setTimeout(()=>b.textContent=L("Copy","复制"),1600)};
 // benchmark bars, rejected stamps, RSI loop
 new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){document.querySelectorAll('#bm i').forEach(i=>i.style.width=i.dataset.w+'%');o.disconnect()}},{threshold:.3}).observe($('bm'));
