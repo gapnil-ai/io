@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AgentV × TokenFly · 先造世界，再拍电影</title>
-<meta name="description" content="更省、更快、更真：一条 5 秒视频约两三分钱（估算），约 5 秒出片，每个镜头都拍在能走进去的 3D 空间里。AgentV × TokenFly。">
-<meta property="og:title" content="AgentV × TokenFly · 先造世界，再拍电影">
-<meta property="og:description" content="更省、更快、更真：两三分钱一条，约 5 秒出片，镜头拍在真实的 3D 空间里。">
+<title>TokenFly × AgentV · 会自己变快的推理引擎</title>
+<meta name="description" content="TokenFly 推理引擎让 330 亿参数的视频模型在 8 张消费级显卡上约 5 秒出片，一条约两三分钱（估算）。AgentV 用它在能走进去的 3D 空间里拍电影。">
+<meta property="og:title" content="TokenFly × AgentV · 会自己变快的推理引擎">
+<meta property="og:description" content="330 亿参数的视频模型，8 张消费级显卡，约 5 秒出片。更省、更快、更真。">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://gapnil-ai.github.io/io/og.jpg">
 <meta property="og:url" content="https://gapnil-ai.github.io/io/">
@@ -58,7 +58,7 @@ nav .r a.go{color:#07090a;background:var(--ac);padding:7px 16px;border-radius:99
 .race small{display:block;color:var(--mute);font-size:12px;margin-top:6px;line-height:1.5}
 @media(max-width:900px){.hero{height:auto;padding-top:38svh}.hero .in{grid-template-columns:1fr;gap:26px;padding-bottom:36px}}
 
-section{padding:130px 0 0;scroll-margin-top:-50px}
+section{padding:130px 0 0;scroll-margin-top:-50px}section.w{padding-top:130px}
 .k{display:flex;gap:14px;align-items:center;margin-bottom:18px}.k i{width:36px;height:1px;background:var(--ac)}
 h2{font-size:clamp(34px,5.2vw,68px);line-height:1.08}
 .lead{color:var(--mute);font-size:18px;max-width:600px;margin:18px 0 0}
@@ -210,21 +210,21 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--mute);fo
 </style>
 </head>
 <body>
-<nav id="nav"><div class="w"><a class="l" href="#">AgentV <span class="ac">×</span> TokenFly</a><div class="r"><a href="#world">造世界</a><a href="#same">不跑偏</a><a href="#engine">引擎</a><a href="#rsi">自演进</a><a href="#api">API</a><a href="#cost">算账</a><a class="go" href="https://poping.art/agentv">立即体验</a></div></div></nav>
+<nav id="nav"><div class="w"><a class="l" href="#">TokenFly <span class="ac">×</span> AgentV</a><div class="r"><a href="#engine">TokenFly 引擎</a><a href="#rsi">自演进</a><a href="#agentv">AgentV</a><a href="#api">API</a><a href="#cost">算账</a><a class="go" href="https://poping.art/agentv">立即体验</a></div></div></nav>
 
 <header class="hero">
   <video id="hv" src="media/world.mp4" poster="media/world.jpg" autoplay muted loop playsinline></video>
   <div class="w in">
     <div>
-      <div class="mono ac" style="margin-bottom:18px">更省 · 更快 · 更真</div>
-      <h1>先造世界，<br>再拍电影</h1>
-      <p>空间是真的，能走进去、能摆机位。出片约 5 秒，生成比播放还快。一条只要两三分钱。</p>
-      <a class="btn p" href="https://poping.art/agentv">立即体验</a> <a class="btn g" href="#engine">为什么这么快</a>
+      <div class="mono ac" style="margin-bottom:18px">TokenFly 推理引擎 · 更省 · 更快 · 更真</div>
+      <h1>会自己变快的<br>推理引擎</h1>
+      <p>TokenFly 让 330 亿参数的视频模型在 8 张消费级显卡上约 5 秒出片，生成比播放还快，一条只要两三分钱。AgentV 用它在真实的 3D 空间里拍电影。</p>
+      <a class="btn p" href="#engine">它为什么这么快</a> <a class="btn g" href="https://poping.art/agentv">体验 AgentV</a>
     </div>
     <div class="race br" id="race">
       <div class="t"><span>成片播放</span><span class="num" id="r1">0.00</span></div>
       <div class="track"><i id="b1"></i></div>
-      <div class="t"><span class="ac">AgentV 生成</span><span class="num ac" id="r2">0.00</span></div>
+      <div class="t"><span class="ac">TokenFly 生成</span><span class="num ac" id="r2">0.00</span></div>
       <div class="track g"><i id="b2"></i></div>
       <div class="verdict" id="vd">生成比播放快 <span class="ac">0.34 秒</span></div>
       <small>计时按真实速度播放。720p 线上生成 4.83 秒，成片时长 5.17 秒；线上 3 步配置，画质与完整模式不等价。背景为产品真实录屏。</small>
@@ -238,8 +238,123 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--mute);fo
   <a href="#engine"><span class="mono ac">速度 · 等得起</span><b class="num">5<i class="sm">秒出片</i></b><p>330 亿参数的视频模型，720p 下生成比播放还快。改一句台词，马上看到结果。</p></a>
   <a href="#world"><span class="mono ac">空间真实感 · 镜头是真的</span><b class="num">3D</b><p>场景不是一张图，是能走进去的空间。机位、焦距、路径都是真实的数值，换机位陈设不变。</p></a>
 </div>
+<section id="engine">
+  <div class="w">
+    <div class="k rv"><i></i><span class="mono ac">01 TokenFly 引擎 · 速度</span></div>
+    <h2 class="rv">330 亿参数的视频模型，<br>约 5 秒出片</h2>
+    <p class="lead rv">TokenFly 是零隙智能从零自研的推理引擎，不依赖现成的推理框架。同一个开源模型，单张显卡跑完整模式要将近 4 分钟；在 TokenFly 上，线上生成中位数 5.23 秒，720p 下 4.83 秒，比成片播放还快。</p>
+    <div class="st3 q rv">
+      <div><b class="num">8<i class="sm">张卡</i></b><span>消费级 RTX 5090，显卡之间没有高端互连，单个请求照样拆到多卡上加速</span></div>
+      <div><b class="num">3<i class="sm">倍</i></b><span>同一组提示词、同为 3 步，比 SGLang 部署快约 3 倍</span></div>
+      <div><b class="num">10<i class="sm">倍以上</i></b><span>相比 20 步的标准 SGLang 部署（约 115 秒）</span></div>
+    </div>
+  </div>
+  <div class="scr" id="scr">
+    <div class="pin"><div class="w" style="width:100%">
+      <div class="mono mute" style="margin-bottom:10px">交付一条 5.17 秒成片要等多久 · 向下滚动</div>
+      <div class="big num"><span id="bn">226.2</span><small>秒</small></div>
+      <div class="meter"><i id="mt"></i></div>
+      <div class="sg">
+        <div>
+          <div class="stg" id="stg">
+            <div class="on"><h3>起点：将近 4 分钟</h3><p>单张 RTX 5090、49 步完整模式。330 亿参数的音视频模型，改一句台词，创作只能排队。</p></div>
+            <div><h3>并行</h3><p>4 张消费级显卡分工去噪，显卡之间没有高端互连，照样把一个请求拆开加速。</p></div>
+            <div><h3>少走几步</h3><p>让模型学会跨更大的步子：49 步降到 4 步，用的是开源加速 LoRA。</p></div>
+            <div><h3>再加四张卡</h3><p>8 张卡分布在两个内存域，一组在算，下一组的数据已经在路上。</p></div>
+            <div><h3>上线：约 5 秒出片</h3><p>7 张卡去噪、1 张卡发布，解码和封装全链路打通。生成 5.23 秒，含封装的完整请求 6.96 秒。</p></div>
+          </div>
+          <div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+          <div class="xn" id="xn"></div>
+        </div>
+        <div>
+          <div class="pipe" id="pipe"><span>文本编码</span><span>重复去噪</span><span>画面解码</span><span>封装成片</span></div>
+          <p class="note" style="margin-top:16px">一次生成的四段路。每一步点亮它动过的环节。</p>
+        </div>
+      </div>
+    </div></div>
+  </div>
+  <div class="w">
+    <h3 class="rv" style="font-size:34px;margin-top:30px">四把钥匙</h3>
+    <div class="after rv">
+      <div><b>少算 · 模型计算重构</b><span>压缩权重直接参与计算，只在重要区域精算。每一项都记录了与参考实现的数值偏差。</span><em>低精度 1.37× · 稀疏注意力 2.62× · 算子融合 1.19× / 1.14×</em></div>
+      <div><b>并行 · 异构资源协同</b><span>8 张卡分在两个内存域、没有高端互连，照样多卡加速；文本编码拆成独立服务。</span><em>文本编码 31.38 → 1.08 秒 · 单次前向 8 卡比 4 卡再快 1.67×</em></div>
+      <div><b>少等 · 时空调度</b><span>7 张卡并行去噪、1 张卡负责发布；计算和传输同时进行，输出逐位一致。</span><em>每次前向 −7.0%</em></div>
+      <div><b>少搬 · 全链路优化</b><span>去噪之外的时间同样压缩：解码器常驻、分块并行，硬件编码封装。</span><em>分块解码 1.78× · 封装 9.46 → 2.01 秒</em></div>
+    </div>
+    <h3 class="rv" style="font-size:34px;margin-top:80px">同一组提示词，快约 3 倍</h3>
+    <div class="bm rv" id="bm">
+      <div class="r t"><span>TokenFly · 3 步 · 7 卡</span><div><i data-w="9.8"></i></div><b class="num">9.19–11.73</b></div>
+      <div class="r"><span>SGLang · 3 步 · 4 卡</span><div><i data-w="26.4"></i></div><b class="num">29.65–31.74</b></div>
+      <div class="r"><span>SGLang · 20 步 · 4 卡</span><div><i data-w="97.4"></i></div><b class="num">114.9–116.9</b></div>
+    </div>
+    <p class="note rv">客户端端到端耗时（秒），1280×720、124 帧，6 条提示词，2026 年 10 月 14 日。TokenFly 用 NVFP4 精度，SGLang 用 BF16 精度，显卡数不同。</p>
+    <div class="anis rv"><span class="mono mute">原理动画</span><a href="assets/feature-amdahl.svg">先找瓶颈</a><a href="assets/feature-multigpu.svg">多卡协作</a><a href="assets/feature-fewstep.svg">少算几步</a></div>
+    <h3 class="rv" style="font-size:34px;margin-top:80px">消费级显卡，整机搬得进机房</h3>
+    <div class="after rv">
+      <div><b>数据不出内网</b><span>整机直接进入客户机房，素材与成片都留在内网，适合广告、影视、政务、医疗等合规敏感行业。</span><em>私有化部署</em></div>
+      <div><b>买得到，价格透明</b><span>消费级显卡现货充足，不依赖受出口管制的数据中心 GPU。</span><em>硬件投入约 15–20 万元</em></div>
+      <div><b>一台机器的产能</b><span>按线上完整请求中位数 6.96 秒串行处理估算。把 8 张卡拆成多组并行服务，是下一步。</span><em>单机日产约 1.2 万条</em></div>
+    </div>
+  </div>
+</section>
+
+<section id="rsi" class="w">
+  <div class="k rv"><i></i><span class="mono ac">02 自演进 · 零隙智能 × 奇点逃逸</span></div>
+  <h2 class="rv">这些提速，<br>不是人一项项调出来的</h2>
+  <p class="lead rv">零隙智能与奇点逃逸共建了一套递归自我改进（RSI）系统。智能体一轮轮提出优化，独立评审逐条把关，只有通过检验的代码和经验才传给下一轮。这是一台会自己变快的引擎。</p>
+  <div class="loop rv" id="loop">
+    <div class="on"><u>01</u><b>审定验收命题树</b><span>奇点逃逸</span></div>
+    <div><u>02</u><b>提出并实现</b><span>双方共建</span></div>
+    <div><u>03</u><b>独立评审</b><span>奇点逃逸</span></div>
+    <div><u>04</u><b>存档与继承</b><span>奇点逃逸</span></div>
+    <div><u>05</u><b>人工关卡</b><span>发布之前</span></div>
+  </div>
+  <p class="ld rv" id="ld">优化开始前，先把“什么算改好了”拆成可以逐条判定的条件，审定后本轮不变。</p>
+  <p class="pull rv">智能体可以改代码，<br>但不能改<span class="ac">“什么算改好了”</span>。</p>
+  <h3 class="rv" style="font-size:34px;margin-top:80px">更快但不对的，一条都不留</h3>
+  <div class="rej rv" id="rej">
+    <div><b>快 7 倍的融合算子</b><span>音频与参考的相似度只有 0.859</span><i>退回</i></div>
+    <div><b>编译版解码器</b><span>输出 148 帧，应为 124 帧</span><i>退回</i></div>
+    <div><b>常驻显存方案</b><span>第二个请求显存溢出</span><i>退回</i></div>
+    <div><b>8 步加速 LoRA</b><span>画质指标 patch-FID 高达 31–48</span><i>退回</i></div>
+  </div>
+  <p class="note rv">如果只看速度，它们都会被当成“更好”的版本。被退回的条件和证据同样留档，后面的轮次不会在同一条路上反复试错。</p>
+  <div class="st3 q rv">
+    <div><b class="num">8.8<i class="sm">×10⁻⁷</i></b><span>与官方实现的最大数值偏差，前 4 个 Transformer 块</span></div>
+    <div><b class="num">0.95</b><span>运动保留，修复量化缩放并加入校正后（原为 0.55）</span></div>
+    <div><b class="num">3<i class="sm">个</i></b><span>让模型“无视提示词”的缺陷被定位并修复</span></div>
+  </div>
+  <p class="note rv">线上 3 步模式使用开源 3 步 LoRA，改变了生成方式，不声称与 20 步画质等价。需要最高画质时可切换 49 步完整模式，单卡即可运行。</p>
+  <h3 class="rv" style="font-size:34px;margin-top:80px">记住所有走不通的路</h3>
+  <p class="lead rv">每一轮结束都留下一份经验报告：试了什么，哪些条件成立，证据在哪里。下一轮从最新的通过版本和这些报告出发，不用从零摸索，改进因此逐轮叠加。</p>
+  <div class="after rv">
+    <div><b>另一种量化方案</b><span>SVDQuant 只把误差从 17.6% 降到 16.8%。</span><em>留档，不再重试</em></div>
+    <div><b>更高精度的权重</b><span>W8A8 方案带来 1.7 倍的显存开销。</span><em>留档，不再重试</em></div>
+    <div><b>换一种通信分组</b><span>通信分组 3/4 没有带来收益。</span><em>留档，不再重试</em></div>
+  </div>
+  <h3 class="rv" style="font-size:34px;margin-top:80px">闭环还在跑</h3>
+  <div class="after rv">
+    <div><b>更准</b><span>继续缩小低精度计算带来的误差。</span></div>
+    <div><b>更多产能</b><span>8 张卡拆成多组并行服务，提升整机吞吐。</span></div>
+    <div><b>更可控</b><span>接通模型自带的首尾帧控制与参考图驱动。</span></div>
+    <div><b>更多目标</b><span>同一套闭环扩展到吞吐、成本，验收条件的生成与审定更自动。</span></div>
+  </div>
+</section>
+
+<section id="agentv" class="w">
+  <div class="k rv"><i></i><span class="mono ac">技术落到产品 · AgentV</span></div>
+  <h2 class="rv">引擎快了，<br>拍片的方式就变了</h2>
+  <p class="lead rv">AgentV 是跑在 TokenFly 上的导演台。改完马上能看到，所以它敢让你先搭出一个 3D 世界、摆好机位，再一个镜头一个镜头地拍。每个产品承诺，背后都有一项技术撑着。</p>
+  <div class="map rv">
+    <div class="r"><div>镜头听导演的</div><div>视频模型不理解空间</div><div><b>世界模型</b>　对话搭建 3D 空间</div></div>
+    <div class="r"><div>改完马上看到</div><div>330 亿参数模型，单卡要分钟级</div><div><b>TokenFly 推理优化</b>　约 5 秒出片</div></div>
+    <div class="r"><div>一键出整季</div><div>多智能体 Token 消耗约 15×</div><div><b>Telos 运行时</b>　会话成本 −92.3%</div></div>
+    <div class="r"><div>拍得起</div><div>托管 API 一条 $0.05–0.52</div><div><b>EryFlow 全栈</b>　¥0.02–0.03（估算）</div></div>
+  </div>
+</section>
+
 <section id="world" class="w">
-  <div class="k rv"><i></i><span class="mono ac">01 造世界 · 空间真实感</span></div>
+  <div class="k rv"><i></i><span class="mono ac">03 造世界 · 空间真实感</span></div>
   <h2 class="rv">镜头不靠描述，<br>靠空间里的摄影机</h2>
   <p class="lead rv">别的工具把运镜写进提示词，然后抽卡。AgentV 先把场景变成 3D 空间，机位、焦距、路径都是你定的数值。</p>
   <div class="cam rv">
@@ -274,7 +389,7 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--mute);fo
 </section>
 
 <section id="same" class="w">
-  <div class="k rv"><i></i><span class="mono ac">02 不跑偏 · 空间真实感</span></div>
+  <div class="k rv"><i></i><span class="mono ac">04 不跑偏 · 空间真实感</span></div>
   <h2 class="rv">一次设定，<br>全剧是同一个人</h2>
   <p class="lead rv">角色和场景只设定一次。点一下换情绪：脸没有变。</p>
   <div class="con rv">
@@ -291,90 +406,6 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--mute);fo
     <div class="r"><div>修改</div><div>改一处，整条重新抽</div><div>改一句台词，只重做受影响的镜头</div></div>
     <div class="r"><div>交付</div><div>一段段素材，自己拼接</div><div>自动排时间线，配音配乐，直接成片</div></div>
   </div>
-</section>
-
-<section id="engine">
-  <div class="w">
-    <div class="k rv"><i></i><span class="mono ac">03 TokenFly 引擎 · 速度</span></div>
-    <h2 class="rv">产品敢这么承诺，<br>是因为引擎跟得上</h2>
-    <p class="lead rv">AgentV 是导演台，TokenFly 是它脚下的推理引擎：从零自研，不依赖现成的推理框架，跑在 8 张消费级显卡上。</p>
-    <div class="map rv">
-      <div class="r"><div>镜头听导演的</div><div>视频模型不理解空间</div><div><b>世界模型</b>　对话搭建 3D 空间</div></div>
-      <div class="r"><div>改完马上看到</div><div>330 亿参数模型，单卡要分钟级</div><div><b>TokenFly 推理优化</b>　约 5 秒出片</div></div>
-      <div class="r"><div>一键出整季</div><div>多智能体 Token 消耗约 15×</div><div><b>Telos 运行时</b>　会话成本 −92.3%</div></div>
-      <div class="r"><div>拍得起</div><div>托管 API 一条 $0.05–0.52</div><div><b>EryFlow 全栈</b>　¥0.02–0.03（估算）</div></div>
-    </div>
-  </div>
-  <div class="scr" id="scr">
-    <div class="pin"><div class="w" style="width:100%">
-      <div class="mono mute" style="margin-bottom:10px">交付一条 5.17 秒成片要等多久 · 向下滚动</div>
-      <div class="big num"><span id="bn">226.2</span><small>秒</small></div>
-      <div class="meter"><i id="mt"></i></div>
-      <div class="sg">
-        <div>
-          <div class="stg" id="stg">
-            <div class="on"><h3>起点：将近 4 分钟</h3><p>单张 RTX 5090、49 步完整模式。330 亿参数的音视频模型，改一句台词，创作只能排队。</p></div>
-            <div><h3>并行</h3><p>4 张消费级显卡分工去噪，显卡之间没有高端互连，照样把一个请求拆开加速。</p></div>
-            <div><h3>少走几步</h3><p>让模型学会跨更大的步子：49 步降到 4 步，用的是开源加速 LoRA。</p></div>
-            <div><h3>再加四张卡</h3><p>8 张卡分布在两个内存域，一组在算，下一组的数据已经在路上。</p></div>
-            <div><h3>上线：约 5 秒出片</h3><p>7 张卡去噪、1 张卡发布，解码和封装全链路打通。生成 5.23 秒，含封装的完整请求 6.96 秒。</p></div>
-          </div>
-          <div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
-          <div class="xn" id="xn"></div>
-        </div>
-        <div>
-          <div class="pipe" id="pipe"><span>文本编码</span><span>重复去噪</span><span>画面解码</span><span>封装成片</span></div>
-          <p class="note" style="margin-top:16px">一次生成的四段路。每一步点亮它动过的环节。</p>
-        </div>
-      </div>
-    </div></div>
-  </div>
-  <div class="w">
-    <h3 class="rv" style="font-size:34px;margin-top:30px">四把钥匙</h3>
-    <div class="after rv">
-      <div><b>少算 · 模型计算重构</b><span>压缩权重直接参与计算，只在重要区域精算。</span><em>1.37× · 2.62×</em></div>
-      <div><b>并行 · 异构资源协同</b><span>没有高端互连的消费级显卡，照样多卡加速。</span><em>文本编码 31.38 → 1.08 秒</em></div>
-      <div><b>少等 · 时空调度</b><span>计算和传输同时进行，输出逐位一致。</span><em>每次前向 −7.0%</em></div>
-      <div><b>少搬 · 全链路优化</b><span>解码分块并行，硬件编码封装。</span><em>封装 9.46 → 2.01 秒</em></div>
-    </div>
-    <h3 class="rv" style="font-size:34px;margin-top:80px">同一组提示词，快约 3 倍</h3>
-    <div class="bm rv" id="bm">
-      <div class="r t"><span>TokenFly · 3 步 · 7 卡</span><div><i data-w="9.8"></i></div><b class="num">9.19–11.73</b></div>
-      <div class="r"><span>SGLang · 3 步 · 4 卡</span><div><i data-w="26.4"></i></div><b class="num">29.65–31.74</b></div>
-      <div class="r"><span>SGLang · 20 步 · 4 卡</span><div><i data-w="97.4"></i></div><b class="num">114.9–116.9</b></div>
-    </div>
-    <p class="note rv">客户端端到端耗时（秒），1280×720、124 帧，6 条提示词，2026 年 10 月 14 日。TokenFly 用 NVFP4 精度，SGLang 用 BF16 精度，显卡数不同。</p>
-    <div class="anis rv"><span class="mono mute">原理动画</span><a href="assets/feature-amdahl.svg">先找瓶颈</a><a href="assets/feature-multigpu.svg">多卡协作</a><a href="assets/feature-fewstep.svg">少算几步</a></div>
-  </div>
-</section>
-
-<section id="rsi" class="w">
-  <div class="k rv"><i></i><span class="mono ac">04 自演进 · 零隙智能 × 奇点逃逸</span></div>
-  <h2 class="rv">这些提速，<br>不是人一项项调出来的</h2>
-  <p class="lead rv">零隙智能与奇点逃逸共建了一套递归自我改进（RSI）系统。智能体一轮轮提出优化，独立评审逐条把关，只有通过检验的代码和经验才传给下一轮。这是一台会自己变快的引擎。</p>
-  <div class="loop rv" id="loop">
-    <div class="on"><u>01</u><b>审定验收命题树</b><span>奇点逃逸</span></div>
-    <div><u>02</u><b>提出并实现</b><span>双方共建</span></div>
-    <div><u>03</u><b>独立评审</b><span>奇点逃逸</span></div>
-    <div><u>04</u><b>存档与继承</b><span>奇点逃逸</span></div>
-    <div><u>05</u><b>人工关卡</b><span>发布之前</span></div>
-  </div>
-  <p class="ld rv" id="ld">优化开始前，先把“什么算改好了”拆成可以逐条判定的条件，审定后本轮不变。</p>
-  <p class="pull rv">智能体可以改代码，<br>但不能改<span class="ac">“什么算改好了”</span>。</p>
-  <h3 class="rv" style="font-size:34px;margin-top:80px">更快但不对的，一条都不留</h3>
-  <div class="rej rv" id="rej">
-    <div><b>快 7 倍的融合算子</b><span>音频与参考的相似度只有 0.859</span><i>退回</i></div>
-    <div><b>编译版解码器</b><span>输出 148 帧，应为 124 帧</span><i>退回</i></div>
-    <div><b>常驻显存方案</b><span>第二个请求显存溢出</span><i>退回</i></div>
-    <div><b>8 步加速 LoRA</b><span>画质指标 patch-FID 高达 31–48</span><i>退回</i></div>
-  </div>
-  <p class="note rv">如果只看速度，它们都会被当成“更好”的版本。被退回的条件和证据同样留档，后面的轮次不会在同一条路上反复试错。</p>
-  <div class="st3 q rv">
-    <div><b class="num">8.8<i class="sm">×10⁻⁷</i></b><span>与官方实现的最大数值偏差，前 4 个 Transformer 块</span></div>
-    <div><b class="num">0.95</b><span>运动保留，修复量化缩放并加入校正后（原为 0.55）</span></div>
-    <div><b class="num">3<i class="sm">个</i></b><span>让模型“无视提示词”的缺陷被定位并修复</span></div>
-  </div>
-  <p class="note rv">线上 3 步模式使用开源 3 步 LoRA，改变了生成方式，不声称与 20 步画质等价。需要最高画质时可切换 49 步完整模式，单卡即可运行。</p>
 </section>
 
 <section id="api" class="w">
