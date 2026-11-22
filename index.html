@@ -2,6 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
+<script>(function(){var l=null,m=/[?&]lang=(zh|en)/.exec(location.search);try{if(m){l=m[1];localStorage.setItem('lang',l)}else l=localStorage.getItem('lang')}catch(e){if(m)l=m[1]}if(l==='en'){document.documentElement.className='en';document.documentElement.lang='en'}})()</script>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Gapnil × AgentV · 会自己变快的推理引擎</title>
 <meta name="description" content="Gapnil 推理引擎让 330 亿参数的视频模型在 8 张消费级显卡上约 5 秒出片，一条约两三分钱（估算）。AgentV 用它在能走进去的 3D 空间里拍电影。">
@@ -25,12 +26,17 @@ h1,h2,h3,.sm{font-family:Smiley,-apple-system,"PingFang SC",sans-serif;font-weig
 .num{font-family:Jersey,ui-monospace,monospace;font-variant-numeric:tabular-nums}
 .mono{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
 .ac{color:var(--ac)}.mute{color:var(--mute)}
+x-e,x-z{display:inline}.st3 b span{font-size:inherit;color:inherit}html:not(.en) x-e,html.en x-z{display:none}
 nav{position:fixed;top:0;left:0;right:0;z-index:30;transition:background .3s}
 nav.s{background:#07090aee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 nav .w{display:flex;justify-content:space-between;align-items:center;height:60px}
 nav .l{font-family:Smiley;font-size:20px}nav .r a{margin-left:26px;font-size:14px;color:#c9d2cc}nav .r a:hover{color:var(--ac)}
 nav .r a.go{color:#07090a;background:var(--ac);padding:7px 16px;border-radius:99px;font-weight:700}
-@media(max-width:720px){nav .r a:not(.go){display:none}}
+nav .r a.lang{color:var(--ac);border:1.5px solid var(--ac);padding:5px 14px;border-radius:99px;font-weight:700;margin-left:22px}nav .r a.lang:hover{background:var(--ac);color:#07090a}nav .r a.go{margin-left:12px}
+@media(max-width:720px){nav .r a:not(.go):not(.lang){display:none}nav .r a.lang{margin-left:0}}
+@media(max-width:1000px){nav .r a{margin-left:16px}}
+@media(max-width:720px){html.en h1{font-size:40px}}
+.hl{display:inline-block;margin-top:14px;font-size:14px;color:#c9d2cc;border-bottom:1px solid var(--ac)}.hl:hover{color:var(--ac)}
 .btn{display:inline-block;padding:14px 28px;border-radius:99px;font-weight:700;font-size:16px;transition:transform .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn.p{background:var(--ac);color:#07090a}.btn.g{border:1px solid #ffffff44;color:var(--fg);backdrop-filter:blur(6px)}
@@ -210,267 +216,271 @@ footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--mute);fo
 </style>
 </head>
 <body>
-<nav id="nav"><div class="w"><a class="l" href="#">Gapnil <span class="ac">×</span> AgentV</a><div class="r"><a href="#engine">Gapnil 引擎</a><a href="#rsi">自演进</a><a href="#agentv">AgentV</a><a href="#api">API</a><a href="#cost">算账</a><a class="go" href="https://poping.art/agentv">立即体验</a></div></div></nav>
+<nav id="nav"><div class="w"><a class="l" href="#">Gapnil <span class="ac">×</span> AgentV</a><div class="r"><a href="#engine"><x-e>Gapnil engine</x-e><x-z>Gapnil 引擎</x-z></a><a href="#rsi"><x-e>Self-improving</x-e><x-z>自演进</x-z></a><a href="#agentv">AgentV</a><a href="#api">API</a><a href="#cost"><x-e>Cost</x-e><x-z>算账</x-z></a><a class="lang" id="lgs" href="?lang=en" hreflang="en"><x-e>中文</x-e><x-z>English</x-z></a><a class="go" href="https://poping.art/agentv"><x-e>Try it now</x-e><x-z>立即体验</x-z></a></div></div></nav>
 
 <header class="hero">
   <video id="hv" src="media/world.mp4" poster="media/world.jpg" autoplay muted loop playsinline></video>
   <div class="w in">
     <div>
-      <div class="mono ac" style="margin-bottom:18px">Gapnil 推理引擎 · 更省 · 更快 · 更真</div>
-      <h1>会自己变快的<br>推理引擎</h1>
-      <p>Gapnil 让 330 亿参数的视频模型在 8 张消费级显卡上约 5 秒出片，生成比播放还快，一条只要两三分钱。AgentV 用它在真实的 3D 空间里拍电影。</p>
-      <a class="btn p" href="#engine">它为什么这么快</a> <a class="btn g" href="https://poping.art/agentv">体验 AgentV</a> <a class="btn g" href="https://zerogap.cn/">体验 Gapnil</a>
+      <div class="mono ac" style="margin-bottom:18px"><x-e>Gapnil inference engine · Cheaper · Faster · Truer</x-e><x-z>Gapnil 推理引擎 · 更省 · 更快 · 更真</x-z></div>
+      <h1><x-e>The inference engine<br>that speeds itself up</x-e><x-z>会自己变快的<br>推理引擎</x-z></h1>
+      <p><x-e>Gapnil runs a 33-billion-parameter video model on 8 consumer GPUs and delivers a clip in about 5 seconds, faster than it plays back, for ¥0.02–0.03 a clip. AgentV uses it to shoot films inside real 3D spaces.</x-e><x-z>Gapnil 让 330 亿参数的视频模型在 8 张消费级显卡上约 5 秒出片，生成比播放还快，一条只要两三分钱。AgentV 用它在真实的 3D 空间里拍电影。</x-z></p>
+      <a class="btn p" href="#engine"><x-e>Why it is this fast</x-e><x-z>它为什么这么快</x-z></a> <a class="btn g" href="https://poping.art/agentv"><x-e>Try AgentV</x-e><x-z>体验 AgentV</x-z></a> <a class="btn g" href="https://zerogap.cn/"><x-e>Try Gapnil</x-e><x-z>体验 Gapnil</x-z></a>
+      <br><a class="hl" id="lgh" href="?lang=en"><x-e>切换到中文版 →</x-e><x-z>Switch to English →</x-z></a>
     </div>
     <div class="race br" id="race">
-      <div class="t"><span>成片播放</span><span class="num" id="r1">0.00</span></div>
+      <div class="t"><span><x-e>Clip playback</x-e><x-z>成片播放</x-z></span><span class="num" id="r1">0.00</span></div>
       <div class="track"><i id="b1"></i></div>
-      <div class="t"><span class="ac">Gapnil 生成</span><span class="num ac" id="r2">0.00</span></div>
+      <div class="t"><span class="ac"><x-e>Gapnil generation</x-e><x-z>Gapnil 生成</x-z></span><span class="num ac" id="r2">0.00</span></div>
       <div class="track g"><i id="b2"></i></div>
-      <div class="verdict" id="vd">生成比播放快 <span class="ac">0.34 秒</span></div>
-      <small>计时按真实速度播放。720p 线上生成 4.83 秒，成片时长 5.17 秒；线上 3 步配置，画质与完整模式不等价。背景为产品真实录屏。</small>
+      <div class="verdict" id="vd"><x-e>Generated <span class="ac">0.34 s</span> before playback ends</x-e><x-z>生成比播放快 <span class="ac">0.34 秒</span></x-z></div>
+      <small><x-e>The timer runs at real speed. 720p generation takes 4.83 s in production; the clip lasts 5.17 s. Production uses a 3-step setup, which is not equal in quality to full mode. The background is a real screen recording of the product.</x-e><x-z>计时按真实速度播放。720p 线上生成 4.83 秒，成片时长 5.17 秒；线上 3 步配置，画质与完整模式不等价。背景为产品真实录屏。</x-z></small>
     </div>
   </div>
 </header>
 
 <main>
 <div class="w tri rv">
-  <a href="#cost"><span class="mono ac">价格 · 拍得起</span><b class="num">¥0.02<i class="sm">起</i></b><p>一条 5 秒视频的算力成本约两三分钱（估算），比托管 API 起步价低一到两个数量级。</p></a>
-  <a href="#engine"><span class="mono ac">速度 · 等得起</span><b class="num">5<i class="sm">秒出片</i></b><p>330 亿参数的视频模型，720p 下生成比播放还快。改一句台词，马上看到结果。</p></a>
-  <a href="#world"><span class="mono ac">空间真实感 · 镜头是真的</span><b class="num">3D</b><p>场景不是一张图，是能走进去的空间。机位、焦距、路径都是真实的数值，换机位陈设不变。</p></a>
+  <a href="#cost"><span class="mono ac"><x-e>Price · Affordable</x-e><x-z>价格 · 拍得起</x-z></span><b class="num">¥0.02<i class="sm"><x-e>/clip</x-e><x-z>起</x-z></i></b><p><x-e>Compute for a 5-second clip costs about ¥0.02–0.03 (estimate), one to two orders of magnitude below the entry price of hosted APIs.</x-e><x-z>一条 5 秒视频的算力成本约两三分钱（估算），比托管 API 起步价低一到两个数量级。</x-z></p></a>
+  <a href="#engine"><span class="mono ac"><x-e>Speed · No waiting</x-e><x-z>速度 · 等得起</x-z></span><b class="num">5<i class="sm"><x-e>sec</x-e><x-z>秒出片</x-z></i></b><p><x-e>A 33-billion-parameter video model that generates 720p faster than it plays. Change one line of dialogue and see the result right away.</x-e><x-z>330 亿参数的视频模型，720p 下生成比播放还快。改一句台词，马上看到结果。</x-z></p></a>
+  <a href="#world"><span class="mono ac"><x-e>Spatial realism · Real cameras</x-e><x-z>空间真实感 · 镜头是真的</x-z></span><b class="num">3D</b><p><x-e>A scene is a space you can walk into, not a single image. Camera position, focal length and path are real numbers, and the set stays put when you move the camera.</x-e><x-z>场景不是一张图，是能走进去的空间。机位、焦距、路径都是真实的数值，换机位陈设不变。</x-z></p></a>
 </div>
 <section id="engine">
   <div class="w">
-    <div class="k rv"><i></i><span class="mono ac">01 Gapnil 引擎 · 速度</span></div>
-    <h2 class="rv">330 亿参数的视频模型，<br>约 5 秒出片</h2>
-    <p class="lead rv">Gapnil 是零隙智能从零自研的推理引擎，不依赖现成的推理框架。同一个开源模型，单张显卡跑完整模式要将近 4 分钟；在 Gapnil 上，线上生成中位数 5.23 秒，720p 下 4.83 秒，比成片播放还快。</p>
+    <div class="k rv"><i></i><span class="mono ac"><x-e>01 Gapnil engine · Speed</x-e><x-z>01 Gapnil 引擎 · 速度</x-z></span></div>
+    <h2 class="rv"><x-e>A 33B-parameter video model,<br>a clip in about 5 seconds</x-e><x-z>330 亿参数的视频模型，<br>约 5 秒出片</x-z></h2>
+    <p class="lead rv"><x-e>Gapnil is an inference engine built from scratch by the Gapnil team, with no off-the-shelf inference framework underneath. The same open-source model needs almost 4 minutes in full mode on a single GPU. On Gapnil, median production generation takes 5.23 s, and 4.83 s at 720p, which is shorter than the clip itself.</x-e><x-z>Gapnil 是零隙智能从零自研的推理引擎，不依赖现成的推理框架。同一个开源模型，单张显卡跑完整模式要将近 4 分钟；在 Gapnil 上，线上生成中位数 5.23 秒，720p 下 4.83 秒，比成片播放还快。</x-z></p>
     <div class="st3 q rv">
-      <div><b class="num">8<i class="sm">张卡</i></b><span>消费级 RTX 5090，显卡之间没有高端互连，单个请求照样拆到多卡上加速</span></div>
-      <div><b class="num">3<i class="sm">倍</i></b><span>同一组提示词、同为 3 步，比 SGLang 部署快约 3 倍</span></div>
-      <div><b class="num">10<i class="sm">倍以上</i></b><span>相比 20 步的标准 SGLang 部署（约 115 秒）</span></div>
+      <div><b class="num">8<i class="sm"><x-e>GPUs</x-e><x-z>张卡</x-z></i></b><span><x-e>Consumer RTX 5090 cards with no high-end interconnect between them, and one request is still split across cards</x-e><x-z>消费级 RTX 5090，显卡之间没有高端互连，单个请求照样拆到多卡上加速</x-z></span></div>
+      <div><b class="num">3<i class="sm"><x-e>×</x-e><x-z>倍</x-z></i></b><span><x-e>Same prompts, same 3 steps: about 3× faster than an SGLang deployment</x-e><x-z>同一组提示词、同为 3 步，比 SGLang 部署快约 3 倍</x-z></span></div>
+      <div><b class="num">10<i class="sm"><x-e>×+</x-e><x-z>倍以上</x-z></i></b><span><x-e>Against a standard 20-step SGLang deployment (about 115 s)</x-e><x-z>相比 20 步的标准 SGLang 部署（约 115 秒）</x-z></span></div>
     </div>
   </div>
   <div class="scr" id="scr">
     <div class="pin"><div class="w" style="width:100%">
-      <div class="mono mute" style="margin-bottom:10px">交付一条 5.17 秒成片要等多久 · 向下滚动</div>
-      <div class="big num"><span id="bn">226.2</span><small>秒</small></div>
+      <div class="mono mute" style="margin-bottom:10px"><x-e>How long you wait for a 5.17-second clip · scroll down</x-e><x-z>交付一条 5.17 秒成片要等多久 · 向下滚动</x-z></div>
+      <div class="big num"><span id="bn">226.2</span><small><x-e>s</x-e><x-z>秒</x-z></small></div>
       <div class="meter"><i id="mt"></i></div>
       <div class="sg">
         <div>
           <div class="stg" id="stg">
-            <div class="on"><h3>起点：将近 4 分钟</h3><p>单张 RTX 5090、49 步完整模式。330 亿参数的音视频模型，改一句台词，创作只能排队。</p></div>
-            <div><h3>并行</h3><p>4 张消费级显卡分工去噪，显卡之间没有高端互连，照样把一个请求拆开加速。</p></div>
-            <div><h3>少走几步</h3><p>让模型学会跨更大的步子：49 步降到 4 步，用的是开源加速 LoRA。</p></div>
-            <div><h3>再加四张卡</h3><p>8 张卡分布在两个内存域，一组在算，下一组的数据已经在路上。</p></div>
-            <div><h3>上线：约 5 秒出片</h3><p>7 张卡去噪、1 张卡发布，解码和封装全链路打通。生成 5.23 秒，含封装的完整请求 6.96 秒。</p></div>
+            <div class="on"><h3><x-e>Start: almost 4 minutes</x-e><x-z>起点：将近 4 分钟</x-z></h3><p><x-e>One RTX 5090, full 49-step mode. A 33-billion-parameter audio-video model: change one line and you wait in a queue.</x-e><x-z>单张 RTX 5090、49 步完整模式。330 亿参数的音视频模型，改一句台词，创作只能排队。</x-z></p></div>
+            <div><h3><x-e>Go parallel</x-e><x-z>并行</x-z></h3><p><x-e>4 consumer GPUs share the denoising work. With no high-end interconnect, one request is still split and sped up.</x-e><x-z>4 张消费级显卡分工去噪，显卡之间没有高端互连，照样把一个请求拆开加速。</x-z></p></div>
+            <div><h3><x-e>Take fewer steps</x-e><x-z>少走几步</x-z></h3><p><x-e>Teach the model to take bigger strides: 49 steps down to 4, using an open-source acceleration LoRA.</x-e><x-z>让模型学会跨更大的步子：49 步降到 4 步，用的是开源加速 LoRA。</x-z></p></div>
+            <div><h3><x-e>Add four more cards</x-e><x-z>再加四张卡</x-z></h3><p><x-e>8 cards across two memory domains. While one group computes, the next group's data is already on its way.</x-e><x-z>8 张卡分布在两个内存域，一组在算，下一组的数据已经在路上。</x-z></p></div>
+            <div><h3><x-e>In production: about 5 seconds</x-e><x-z>上线：约 5 秒出片</x-z></h3><p><x-e>7 cards denoise and 1 card publishes, with decoding and packaging connected end to end. Generation takes 5.23 s; the full request including packaging takes 6.96 s.</x-e><x-z>7 张卡去噪、1 张卡发布，解码和封装全链路打通。生成 5.23 秒，含封装的完整请求 6.96 秒。</x-z></p></div>
           </div>
           <div class="dots" id="dots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
           <div class="xn" id="xn"></div>
         </div>
         <div>
-          <div class="pipe" id="pipe"><span>文本编码</span><span>重复去噪</span><span>画面解码</span><span>封装成片</span></div>
-          <p class="note" style="margin-top:16px">一次生成的四段路。每一步点亮它动过的环节。</p>
+          <div class="pipe" id="pipe"><span><x-e>Text encoding</x-e><x-z>文本编码</x-z></span><span><x-e>Iterative denoising</x-e><x-z>重复去噪</x-z></span><span><x-e>Frame decoding</x-e><x-z>画面解码</x-z></span><span><x-e>Packaging</x-e><x-z>封装成片</x-z></span></div>
+          <p class="note" style="margin-top:16px"><x-e>The four stages of one generation. Each step lights up the stages it changed.</x-e><x-z>一次生成的四段路。每一步点亮它动过的环节。</x-z></p>
         </div>
       </div>
     </div></div>
   </div>
   <div class="w">
-    <h3 class="rv" style="font-size:34px;margin-top:30px">四把钥匙</h3>
+    <h3 class="rv" style="font-size:34px;margin-top:30px"><x-e>Four keys</x-e><x-z>四把钥匙</x-z></h3>
     <div class="after rv">
-      <div><b>少算 · 模型计算重构</b><span>压缩权重直接参与计算，只在重要区域精算。每一项都记录了与参考实现的数值偏差。</span><em>低精度 1.37× · 稀疏注意力 2.62× · 算子融合 1.19× / 1.14×</em></div>
-      <div><b>并行 · 异构资源协同</b><span>8 张卡分在两个内存域、没有高端互连，照样多卡加速；文本编码拆成独立服务。</span><em>文本编码 31.38 → 1.08 秒 · 单次前向 8 卡比 4 卡再快 1.67×</em></div>
-      <div><b>少等 · 时空调度</b><span>7 张卡并行去噪、1 张卡负责发布；计算和传输同时进行，输出逐位一致。</span><em>每次前向 −7.0%</em></div>
-      <div><b>少搬 · 全链路优化</b><span>去噪之外的时间同样压缩：解码器常驻、分块并行，硬件编码封装。</span><em>分块解码 1.78× · 封装 9.46 → 2.01 秒</em></div>
+      <div><b><x-e>Compute less · Rebuilt model math</x-e><x-z>少算 · 模型计算重构</x-z></b><span><x-e>Compressed weights take part in the computation directly, and only the regions that matter are computed precisely. Every change records its numerical deviation from the reference.</x-e><x-z>压缩权重直接参与计算，只在重要区域精算。每一项都记录了与参考实现的数值偏差。</x-z></span><em><x-e>Low precision 1.37× · Sparse attention 2.62× · Operator fusion 1.19× / 1.14×</x-e><x-z>低精度 1.37× · 稀疏注意力 2.62× · 算子融合 1.19× / 1.14×</x-z></em></div>
+      <div><b><x-e>Go parallel · Mixed hardware</x-e><x-z>并行 · 异构资源协同</x-z></b><span><x-e>8 cards in two memory domains with no high-end interconnect still accelerate one request. Text encoding runs as a separate service.</x-e><x-z>8 张卡分在两个内存域、没有高端互连，照样多卡加速；文本编码拆成独立服务。</x-z></span><em><x-e>Text encoding 31.38 → 1.08 s · 8 cards 1.67× faster than 4 per forward pass</x-e><x-z>文本编码 31.38 → 1.08 秒 · 单次前向 8 卡比 4 卡再快 1.67×</x-z></em></div>
+      <div><b><x-e>Wait less · Scheduling in space and time</x-e><x-z>少等 · 时空调度</x-z></b><span><x-e>7 cards denoise in parallel while 1 publishes. Compute and transfer overlap, and the output is bit-identical.</x-e><x-z>7 张卡并行去噪、1 张卡负责发布；计算和传输同时进行，输出逐位一致。</x-z></span><em><x-e>−7.0% per forward pass</x-e><x-z>每次前向 −7.0%</x-z></em></div>
+      <div><b><x-e>Move less · Whole-pipeline tuning</x-e><x-z>少搬 · 全链路优化</x-z></b><span><x-e>Time outside denoising is cut too: a resident decoder, tiled parallel decoding and hardware-encoded packaging.</x-e><x-z>去噪之外的时间同样压缩：解码器常驻、分块并行，硬件编码封装。</x-z></span><em><x-e>Tiled decoding 1.78× · Packaging 9.46 → 2.01 s</x-e><x-z>分块解码 1.78× · 封装 9.46 → 2.01 秒</x-z></em></div>
     </div>
-    <h3 class="rv" style="font-size:34px;margin-top:80px">同一组提示词，快约 3 倍</h3>
+    <h3 class="rv" style="font-size:34px;margin-top:80px"><x-e>Same prompts, about 3× faster</x-e><x-z>同一组提示词，快约 3 倍</x-z></h3>
     <div class="bm rv" id="bm">
-      <div class="r t"><span>Gapnil · 3 步</span><div><i data-w="9.8"></i></div><b class="num">9.19–11.73</b></div>
-      <div class="r"><span>SGLang · 3 步</span><div><i data-w="26.4"></i></div><b class="num">29.65–31.74</b></div>
-      <div class="r"><span>SGLang · 20 步</span><div><i data-w="97.4"></i></div><b class="num">114.9–116.9</b></div>
+      <div class="r t"><span><x-e>Gapnil · 3 steps</x-e><x-z>Gapnil · 3 步</x-z></span><div><i data-w="9.8"></i></div><b class="num">9.19–11.73</b></div>
+      <div class="r"><span><x-e>SGLang · 3 steps</x-e><x-z>SGLang · 3 步</x-z></span><div><i data-w="26.4"></i></div><b class="num">29.65–31.74</b></div>
+      <div class="r"><span><x-e>SGLang · 20 steps</x-e><x-z>SGLang · 20 步</x-z></span><div><i data-w="97.4"></i></div><b class="num">114.9–116.9</b></div>
     </div>
-    <p class="note rv">客户端端到端耗时（秒），1280×720、124 帧，6 条提示词，2026 年 10 月 14 日。Gapnil 用 NVFP4 精度，SGLang 用 BF16 精度。</p>
-    <div class="anis rv"><span class="mono mute">原理动画</span><a href="assets/feature-amdahl.svg">先找瓶颈</a><a href="assets/feature-multigpu.svg">多卡协作</a><a href="assets/feature-fewstep.svg">少算几步</a></div>
-    <h3 class="rv" style="font-size:34px;margin-top:80px">消费级显卡，整机搬得进机房</h3>
+    <p class="note rv"><x-e>Client-side end-to-end time in seconds. 1280×720, 124 frames, 6 prompts, 14 October 2026. Gapnil runs NVFP4 precision; SGLang runs BF16.</x-e><x-z>客户端端到端耗时（秒），1280×720、124 帧，6 条提示词，2026 年 10 月 14 日。Gapnil 用 NVFP4 精度，SGLang 用 BF16 精度。</x-z></p>
+    <div class="anis rv"><span class="mono mute"><x-e>How it works</x-e><x-z>原理动画</x-z></span><a href="assets/feature-amdahl.svg"><x-e>Find the bottleneck</x-e><x-z>先找瓶颈</x-z></a><a href="assets/feature-multigpu.svg"><x-e>Cards working together</x-e><x-z>多卡协作</x-z></a><a href="assets/feature-fewstep.svg"><x-e>Fewer steps</x-e><x-z>少算几步</x-z></a></div>
+    <h3 class="rv" style="font-size:34px;margin-top:80px"><x-e>Consumer GPUs, a machine that fits in your server room</x-e><x-z>消费级显卡，整机搬得进机房</x-z></h3>
     <div class="after rv">
-      <div><b>数据不出内网</b><span>整机直接进入客户机房，素材与成片都留在内网，适合广告、影视、政务、医疗等合规敏感行业。</span><em>私有化部署</em></div>
-      <div><b>买得到，价格透明</b><span>消费级显卡现货充足，不依赖受出口管制的数据中心 GPU。</span><em>硬件投入约 15–20 万元</em></div>
-      <div><b>一台机器的产能</b><span>按线上完整请求中位数 6.96 秒串行处理估算。把 8 张卡拆成多组并行服务，是下一步。</span><em>单机日产约 1.2 万条</em></div>
+      <div><b><x-e>Data stays inside</x-e><x-z>数据不出内网</x-z></b><span><x-e>The whole machine goes into the customer's server room. Source material and finished clips stay on the internal network, which suits advertising, film, government, healthcare and other compliance-sensitive fields.</x-e><x-z>整机直接进入客户机房，素材与成片都留在内网，适合广告、影视、政务、医疗等合规敏感行业。</x-z></span><em><x-e>On-premises deployment</x-e><x-z>私有化部署</x-z></em></div>
+      <div><b><x-e>Easy to buy, clear pricing</x-e><x-z>买得到，价格透明</x-z></b><span><x-e>Consumer GPUs are in stock and do not depend on export-controlled data-center GPUs.</x-e><x-z>消费级显卡现货充足，不依赖受出口管制的数据中心 GPU。</x-z></span><em><x-e>About ¥150–200K of hardware</x-e><x-z>硬件投入约 15–20 万元</x-z></em></div>
+      <div><b><x-e>What one machine produces</x-e><x-z>一台机器的产能</x-z></b><span><x-e>Estimated from the 6.96 s median full request, processed one at a time. Splitting the 8 cards into several parallel groups comes next.</x-e><x-z>按线上完整请求中位数 6.96 秒串行处理估算。把 8 张卡拆成多组并行服务，是下一步。</x-z></span><em><x-e>About 12,000 clips a day per machine</x-e><x-z>单机日产约 1.2 万条</x-z></em></div>
     </div>
   </div>
 </section>
 
 <section id="rsi" class="w">
-  <div class="k rv"><i></i><span class="mono ac">02 自演进 · 零隙智能 × 奇点逃逸</span></div>
-  <h2 class="rv">这些提速，<br>不是人一项项调出来的</h2>
-  <p class="lead rv">零隙智能与奇点逃逸共建了一套递归自我改进（RSI）系统。智能体一轮轮提出优化，独立评审逐条把关，只有通过检验的代码和经验才传给下一轮。这是一台会自己变快的引擎。</p>
+  <div class="k rv"><i></i><span class="mono ac"><x-e>02 Self-improving · Gapnil × Singularity Escape (奇点逃逸)</x-e><x-z>02 自演进 · 零隙智能 × 奇点逃逸</x-z></span></div>
+  <h2 class="rv"><x-e>These speedups were not<br>tuned by hand, one by one</x-e><x-z>这些提速，<br>不是人一项项调出来的</x-z></h2>
+  <p class="lead rv"><x-e>Gapnil and Singularity Escape built a recursive self-improvement (RSI) system together. Agents propose optimizations round after round, an independent reviewer checks each condition, and only code and lessons that pass are handed to the next round. The engine speeds itself up.</x-e><x-z>零隙智能与奇点逃逸共建了一套递归自我改进（RSI）系统。智能体一轮轮提出优化，独立评审逐条把关，只有通过检验的代码和经验才传给下一轮。这是一台会自己变快的引擎。</x-z></p>
   <div class="loop rv" id="loop">
-    <div class="on"><u>01</u><b>审定验收命题树</b><span>奇点逃逸</span></div>
-    <div><u>02</u><b>提出并实现</b><span>双方共建</span></div>
-    <div><u>03</u><b>独立评审</b><span>奇点逃逸</span></div>
-    <div><u>04</u><b>存档与继承</b><span>奇点逃逸</span></div>
-    <div><u>05</u><b>人工关卡</b><span>发布之前</span></div>
+    <div class="on"><u>01</u><b><x-e>Fix the acceptance tree</x-e><x-z>审定验收命题树</x-z></b><span><x-e>Singularity Escape</x-e><x-z>奇点逃逸</x-z></span></div>
+    <div><u>02</u><b><x-e>Propose and implement</x-e><x-z>提出并实现</x-z></b><span><x-e>Built jointly</x-e><x-z>双方共建</x-z></span></div>
+    <div><u>03</u><b><x-e>Independent review</x-e><x-z>独立评审</x-z></b><span><x-e>Singularity Escape</x-e><x-z>奇点逃逸</x-z></span></div>
+    <div><u>04</u><b><x-e>Archive and inherit</x-e><x-z>存档与继承</x-z></b><span><x-e>Singularity Escape</x-e><x-z>奇点逃逸</x-z></span></div>
+    <div><u>05</u><b><x-e>Human gate</x-e><x-z>人工关卡</x-z></b><span><x-e>Before release</x-e><x-z>发布之前</x-z></span></div>
   </div>
-  <p class="ld rv" id="ld">优化开始前，先把“什么算改好了”拆成可以逐条判定的条件，审定后本轮不变。</p>
-  <p class="pull rv">智能体可以改代码，<br>但不能改<span class="ac">“什么算改好了”</span>。</p>
-  <h3 class="rv" style="font-size:34px;margin-top:80px">更快但不对的，一条都不留</h3>
+  <p class="ld rv" id="ld"><x-e>Before any optimization starts, “what counts as better” is broken into conditions that can be judged one by one. Once approved, they stay fixed for the round.</x-e><x-z>优化开始前，先把“什么算改好了”拆成可以逐条判定的条件，审定后本轮不变。</x-z></p>
+  <p class="pull rv"><x-e>Agents may change the code,<br>but not <span class="ac">“what counts as better”</span>.</x-e><x-z>智能体可以改代码，<br>但不能改<span class="ac">“什么算改好了”</span>。</x-z></p>
+  <h3 class="rv" style="font-size:34px;margin-top:80px"><x-e>Faster but wrong never ships</x-e><x-z>更快但不对的，一条都不留</x-z></h3>
   <div class="rej rv" id="rej">
-    <div><b>快 7 倍的融合算子</b><span>音频与参考的相似度只有 0.859</span><i>退回</i></div>
-    <div><b>编译版解码器</b><span>输出 148 帧，应为 124 帧</span><i>退回</i></div>
-    <div><b>常驻显存方案</b><span>第二个请求显存溢出</span><i>退回</i></div>
-    <div><b>8 步加速 LoRA</b><span>画质指标 patch-FID 高达 31–48</span><i>退回</i></div>
+    <div><b><x-e>A fused operator, 7× faster</x-e><x-z>快 7 倍的融合算子</x-z></b><span><x-e>Audio similarity to the reference was only 0.859</x-e><x-z>音频与参考的相似度只有 0.859</x-z></span><i><x-e>Rejected</x-e><x-z>退回</x-z></i></div>
+    <div><b><x-e>A compiled decoder</x-e><x-z>编译版解码器</x-z></b><span><x-e>Produced 148 frames instead of 124</x-e><x-z>输出 148 帧，应为 124 帧</x-z></span><i><x-e>Rejected</x-e><x-z>退回</x-z></i></div>
+    <div><b><x-e>A keep-in-memory scheme</x-e><x-z>常驻显存方案</x-z></b><span><x-e>Ran out of GPU memory on the second request</x-e><x-z>第二个请求显存溢出</x-z></span><i><x-e>Rejected</x-e><x-z>退回</x-z></i></div>
+    <div><b><x-e>An 8-step acceleration LoRA</x-e><x-z>8 步加速 LoRA</x-z></b><span><x-e>The patch-FID quality metric rose to 31–48</x-e><x-z>画质指标 patch-FID 高达 31–48</x-z></span><i><x-e>Rejected</x-e><x-z>退回</x-z></i></div>
   </div>
-  <p class="note rv">如果只看速度，它们都会被当成“更好”的版本。被退回的条件和证据同样留档，后面的轮次不会在同一条路上反复试错。</p>
+  <p class="note rv"><x-e>Judged on speed alone, each of these would have counted as “better”. The failed conditions and evidence are archived too, so later rounds do not retry the same dead ends.</x-e><x-z>如果只看速度，它们都会被当成“更好”的版本。被退回的条件和证据同样留档，后面的轮次不会在同一条路上反复试错。</x-z></p>
   <div class="st3 q rv">
-    <div><b class="num">8.8<i class="sm">×10⁻⁷</i></b><span>与官方实现的最大数值偏差，前 4 个 Transformer 块</span></div>
-    <div><b class="num">0.95</b><span>运动保留，修复量化缩放并加入校正后（原为 0.55）</span></div>
-    <div><b class="num">3<i class="sm">个</i></b><span>让模型“无视提示词”的缺陷被定位并修复</span></div>
+    <div><b class="num">8.8<i class="sm">×10⁻⁷</i></b><span><x-e>Maximum numerical deviation from the official implementation, first 4 Transformer blocks</x-e><x-z>与官方实现的最大数值偏差，前 4 个 Transformer 块</x-z></span></div>
+    <div><b class="num">0.95</b><span><x-e>Motion retention after fixing quantization scaling and adding correction (was 0.55)</x-e><x-z>运动保留，修复量化缩放并加入校正后（原为 0.55）</x-z></span></div>
+    <div><b class="num">3<i class="sm"><x-e>bugs</x-e><x-z>个</x-z></i></b><span><x-e>Defects that made the model “ignore the prompt”, found and fixed</x-e><x-z>让模型“无视提示词”的缺陷被定位并修复</x-z></span></div>
   </div>
-  <p class="note rv">线上 3 步模式使用开源 3 步 LoRA，改变了生成方式，不声称与 20 步画质等价。需要最高画质时可切换 49 步完整模式，单卡即可运行。</p>
-  <h3 class="rv" style="font-size:34px;margin-top:80px">记住所有走不通的路</h3>
-  <p class="lead rv">每一轮结束都留下一份经验报告：试了什么，哪些条件成立，证据在哪里。下一轮从最新的通过版本和这些报告出发，不用从零摸索，改进因此逐轮叠加。</p>
+  <p class="note rv"><x-e>The 3-step production mode uses an open-source 3-step LoRA, which changes how clips are generated. We do not claim it matches 20-step quality. For the highest quality, switch to the full 49-step mode, which runs on a single card.</x-e><x-z>线上 3 步模式使用开源 3 步 LoRA，改变了生成方式，不声称与 20 步画质等价。需要最高画质时可切换 49 步完整模式，单卡即可运行。</x-z></p>
+  <h3 class="rv" style="font-size:34px;margin-top:80px"><x-e>Remember every dead end</x-e><x-z>记住所有走不通的路</x-z></h3>
+  <p class="lead rv"><x-e>Every round ends with a report: what was tried, which conditions held, and where the evidence is. The next round starts from the latest passing version and these reports, so it does not start from zero and the gains add up.</x-e><x-z>每一轮结束都留下一份经验报告：试了什么，哪些条件成立，证据在哪里。下一轮从最新的通过版本和这些报告出发，不用从零摸索，改进因此逐轮叠加。</x-z></p>
   <div class="after rv">
-    <div><b>另一种量化方案</b><span>SVDQuant 只把误差从 17.6% 降到 16.8%。</span><em>留档，不再重试</em></div>
-    <div><b>更高精度的权重</b><span>W8A8 方案带来 1.7 倍的显存开销。</span><em>留档，不再重试</em></div>
-    <div><b>换一种通信分组</b><span>通信分组 3/4 没有带来收益。</span><em>留档，不再重试</em></div>
+    <div><b><x-e>A different quantization scheme</x-e><x-z>另一种量化方案</x-z></b><span><x-e>SVDQuant only reduced the error from 17.6% to 16.8%.</x-e><x-z>SVDQuant 只把误差从 17.6% 降到 16.8%。</x-z></span><em><x-e>Archived, not retried</x-e><x-z>留档，不再重试</x-z></em></div>
+    <div><b><x-e>Higher-precision weights</x-e><x-z>更高精度的权重</x-z></b><span><x-e>W8A8 cost 1.7× the GPU memory.</x-e><x-z>W8A8 方案带来 1.7 倍的显存开销。</x-z></span><em><x-e>Archived, not retried</x-e><x-z>留档，不再重试</x-z></em></div>
+    <div><b><x-e>A different communication grouping</x-e><x-z>换一种通信分组</x-z></b><span><x-e>A 3/4 communication grouping brought no gain.</x-e><x-z>通信分组 3/4 没有带来收益。</x-z></span><em><x-e>Archived, not retried</x-e><x-z>留档，不再重试</x-z></em></div>
   </div>
-  <h3 class="rv" style="font-size:34px;margin-top:80px">闭环还在跑</h3>
+  <h3 class="rv" style="font-size:34px;margin-top:80px"><x-e>The loop is still running</x-e><x-z>闭环还在跑</x-z></h3>
   <div class="after rv">
-    <div><b>更准</b><span>继续缩小低精度计算带来的误差。</span></div>
-    <div><b>更多产能</b><span>8 张卡拆成多组并行服务，提升整机吞吐。</span></div>
-    <div><b>更可控</b><span>接通模型自带的首尾帧控制与参考图驱动。</span></div>
-    <div><b>更多目标</b><span>同一套闭环扩展到吞吐、成本，验收条件的生成与审定更自动。</span></div>
+    <div><b><x-e>More accurate</x-e><x-z>更准</x-z></b><span><x-e>Keep shrinking the error introduced by low-precision computation.</x-e><x-z>继续缩小低精度计算带来的误差。</x-z></span></div>
+    <div><b><x-e>More output</x-e><x-z>更多产能</x-z></b><span><x-e>Split the 8 cards into several parallel groups to raise throughput per machine.</x-e><x-z>8 张卡拆成多组并行服务，提升整机吞吐。</x-z></span></div>
+    <div><b><x-e>More control</x-e><x-z>更可控</x-z></b><span><x-e>Connect the model's built-in first/last-frame control and reference-image guidance.</x-e><x-z>接通模型自带的首尾帧控制与参考图驱动。</x-z></span></div>
+    <div><b><x-e>More goals</x-e><x-z>更多目标</x-z></b><span><x-e>Extend the same loop to throughput and cost, and automate more of how acceptance conditions are written and approved.</x-e><x-z>同一套闭环扩展到吞吐、成本，验收条件的生成与审定更自动。</x-z></span></div>
   </div>
 </section>
 
 <section id="agentv" class="w">
-  <div class="k rv"><i></i><span class="mono ac">技术落到产品 · AgentV</span></div>
-  <h2 class="rv">引擎快了，<br>拍片的方式就变了</h2>
-  <p class="lead rv">AgentV 是跑在 Gapnil 上的导演台。改完马上能看到，所以它敢让你先搭出一个 3D 世界、摆好机位，再一个镜头一个镜头地拍。每个产品承诺，背后都有一项技术撑着。</p>
+  <div class="k rv"><i></i><span class="mono ac"><x-e>From technology to product · AgentV</x-e><x-z>技术落到产品 · AgentV</x-z></span></div>
+  <h2 class="rv"><x-e>With a fast engine,<br>filmmaking works differently</x-e><x-z>引擎快了，<br>拍片的方式就变了</x-z></h2>
+  <p class="lead rv"><x-e>AgentV is the director's desk that runs on Gapnil. Because every change shows up right away, it can let you build a 3D world first, place the cameras, and then shoot one shot at a time. Behind each product promise is a piece of technology.</x-e><x-z>AgentV 是跑在 Gapnil 上的导演台。改完马上能看到，所以它敢让你先搭出一个 3D 世界、摆好机位，再一个镜头一个镜头地拍。每个产品承诺，背后都有一项技术撑着。</x-z></p>
   <div class="map rv">
-    <div class="r"><div>镜头听导演的</div><div>视频模型不理解空间</div><div><b>世界模型</b>　对话搭建 3D 空间</div></div>
-    <div class="r"><div>改完马上看到</div><div>330 亿参数模型，单卡要分钟级</div><div><b>Gapnil 推理优化</b>　约 5 秒出片</div></div>
-    <div class="r"><div>一键出整季</div><div>多智能体 Token 消耗约 15×</div><div><b>Telos 运行时</b>　会话成本 −92.3%</div></div>
-    <div class="r"><div>拍得起</div><div>托管 API 一条 $0.05–0.52</div><div><b>EryFlow 全栈</b>　¥0.02–0.03（估算）</div></div>
+    <div class="r"><div><x-e>The camera obeys the director</x-e><x-z>镜头听导演的</x-z></div><div><x-e>Video models do not understand space</x-e><x-z>视频模型不理解空间</x-z></div><div><x-e><b>World model</b>　build a 3D space by chatting</x-e><x-z><b>世界模型</b>　对话搭建 3D 空间</x-z></div></div>
+    <div class="r"><div><x-e>See changes right away</x-e><x-z>改完马上看到</x-z></div><div><x-e>A 33B-parameter model takes minutes on one card</x-e><x-z>330 亿参数模型，单卡要分钟级</x-z></div><div><x-e><b>Gapnil inference optimization</b>　a clip in about 5 s</x-e><x-z><b>Gapnil 推理优化</b>　约 5 秒出片</x-z></div></div>
+    <div class="r"><div><x-e>A whole season in one click</x-e><x-z>一键出整季</x-z></div><div><x-e>Multi-agent work uses about 15× the tokens</x-e><x-z>多智能体 Token 消耗约 15×</x-z></div><div><x-e><b>Telos runtime</b>　session cost −92.3%</x-e><x-z><b>Telos 运行时</b>　会话成本 −92.3%</x-z></div></div>
+    <div class="r"><div><x-e>Affordable to shoot</x-e><x-z>拍得起</x-z></div><div><x-e>Hosted APIs charge $0.05–0.52 a clip</x-e><x-z>托管 API 一条 $0.05–0.52</x-z></div><div><x-e><b>EryFlow full stack</b>　¥0.02–0.03 (estimate)</x-e><x-z><b>EryFlow 全栈</b>　¥0.02–0.03（估算）</x-z></div></div>
   </div>
 </section>
 
 <section id="world" class="w">
-  <div class="k rv"><i></i><span class="mono ac">03 造世界 · 空间真实感</span></div>
-  <h2 class="rv">镜头不靠描述，<br>靠空间里的摄影机</h2>
-  <p class="lead rv">别的工具把运镜写进提示词，然后抽卡。AgentV 先把场景变成 3D 空间，机位、焦距、路径都是你定的数值。</p>
+  <div class="k rv"><i></i><span class="mono ac"><x-e>03 Build the world · Spatial realism</x-e><x-z>03 造世界 · 空间真实感</x-z></span></div>
+  <h2 class="rv"><x-e>Shots come from a camera in space,<br>not from a description</x-e><x-z>镜头不靠描述，<br>靠空间里的摄影机</x-z></h2>
+  <p class="lead rv"><x-e>Other tools write camera moves into the prompt and roll the dice. AgentV turns the scene into a 3D space first, where camera position, focal length and path are numbers you set.</x-e><x-z>别的工具把运镜写进提示词，然后抽卡。AgentV 先把场景变成 3D 空间，机位、焦距、路径都是你定的数值。</x-z></p>
   <div class="cam rv">
     <div>
       <div class="vf br" id="vf">
-        <img id="vimg" src="agentv/shot-9.jpg" alt="示意：在场景里切换机位">
-        <span class="hud mono" style="left:18px;top:14px"><i class="rec"></i><span id="cn">CAM · 正面全景</span></span>
+        <img id="vimg" src="agentv/shot-9.jpg" alt="Illustration: switching camera positions in a scene">
+        <span class="hud mono" style="left:18px;top:14px"><i class="rec"></i><span id="cn"><x-e>CAM · Front wide</x-e><x-z>CAM · 正面全景</x-z></span></span>
         <span class="hud mono" style="right:18px;top:14px">FOV <span id="fv">64</span>°</span>
         <i class="x"></i>
       </div>
       <div class="pre" id="pre">
-        <button class="on" data-t="scale(1.14)">正面全景</button>
-        <button data-t="scale(1.5) translateX(9%) rotateY(13deg)">左 45°</button>
-        <button data-t="scale(1.5) translateX(-9%) rotateY(-13deg)">右 45°</button>
-        <button data-t="scale(1.45) translateY(7%) rotateX(-12deg)">俯拍鸟瞰</button>
-        <button data-t="scale(1.5) translateY(-7%) rotateX(12deg)">低角度仰拍</button>
-        <button data-t="scale(2.5) translate(2%,-3%)">近景细节</button>
+        <button class="on" data-t="scale(1.14)"><x-e>Front wide</x-e><x-z>正面全景</x-z></button>
+        <button data-t="scale(1.5) translateX(9%) rotateY(13deg)"><x-e>Left 45°</x-e><x-z>左 45°</x-z></button>
+        <button data-t="scale(1.5) translateX(-9%) rotateY(-13deg)"><x-e>Right 45°</x-e><x-z>右 45°</x-z></button>
+        <button data-t="scale(1.45) translateY(7%) rotateX(-12deg)"><x-e>Bird's-eye</x-e><x-z>俯拍鸟瞰</x-z></button>
+        <button data-t="scale(1.5) translateY(-7%) rotateX(12deg)"><x-e>Low angle</x-e><x-z>低角度仰拍</x-z></button>
+        <button data-t="scale(2.5) translate(2%,-3%)"><x-e>Close-up</x-e><x-z>近景细节</x-z></button>
       </div>
-      <div class="fov"><span>长焦</span><input type="range" id="fov" min="24" max="64" value="64" aria-label="视场角"><span>广角</span></div>
-      <p class="note">这是网页上的示意交互，用一张静态画面模拟换机位。产品里是真正的 3D 空间，见下方录屏。</p>
+      <div class="fov"><span><x-e>Tele</x-e><x-z>长焦</x-z></span><input type="range" id="fov" min="24" max="64" value="64" aria-label="Field of view"><span><x-e>Wide</x-e><x-z>广角</x-z></span></div>
+      <p class="note"><x-e>This is an illustration on the web page that uses one still image to mimic changing the camera. The product has a real 3D space; see the recording below.</x-e><x-z>这是网页上的示意交互，用一张静态画面模拟换机位。产品里是真正的 3D 空间，见下方录屏。</x-z></p>
     </div>
     <ul class="pts">
-      <li><b>对话搭场景</b><span>用自然语言描述想要的空间，边聊边改。</span></li>
-      <li><b>陈设不会变</b><span>换机位时，货架、海报、家具都留在原位。</span></li>
-      <li><b>白模先定</b><span>去掉颜色只看形体，方向定了再出图，后面少返工。</span></li>
+      <li><b><x-e>Build scenes by chatting</x-e><x-z>对话搭场景</x-z></b><span><x-e>Describe the space you want in plain language and adjust it as you talk.</x-e><x-z>用自然语言描述想要的空间，边聊边改。</x-z></span></li>
+      <li><b><x-e>The set stays put</x-e><x-z>陈设不会变</x-z></b><span><x-e>When the camera moves, shelves, posters and furniture stay where they are.</x-e><x-z>换机位时，货架、海报、家具都留在原位。</x-z></span></li>
+      <li><b><x-e>Block it out first</x-e><x-z>白模先定</x-z></b><span><x-e>Strip the color and look at shapes only. Settle the direction before rendering and rework less later.</x-e><x-z>去掉颜色只看形体，方向定了再出图，后面少返工。</x-z></span></li>
     </ul>
   </div>
   <div class="real rv">
-    <div><div class="mono ac" style="margin-bottom:14px">真实录屏</div><h3>场景不是一张图，<br>是能走进去的空间</h3><p class="mute" style="margin:14px 0 0">在空间里放下摄影机，直接看到取景框；满意了，再让模型按这个机位出画面。</p></div>
+    <div><div class="mono ac" style="margin-bottom:14px"><x-e>Real screen recording</x-e><x-z>真实录屏</x-z></div><h3><x-e>A scene is a space you can walk into,<br>not a single image</x-e><x-z>场景不是一张图，<br>是能走进去的空间</x-z></h3><p class="mute" style="margin:14px 0 0"><x-e>Place a camera in the space and see the viewfinder directly. When it looks right, the model renders from that camera position.</x-e><x-z>在空间里放下摄影机，直接看到取景框；满意了，再让模型按这个机位出画面。</x-z></p></div>
     <div class="br"><video src="media/camera.mp4" poster="media/camera.jpg" muted loop playsinline preload="none" class="lazy"></video></div>
   </div>
 </section>
 
 <section id="same" class="w">
-  <div class="k rv"><i></i><span class="mono ac">04 不跑偏 · 空间真实感</span></div>
-  <h2 class="rv">一次设定，<br>全剧是同一个人</h2>
-  <p class="lead rv">角色和场景只设定一次。点一下换情绪：脸没有变。</p>
+  <div class="k rv"><i></i><span class="mono ac"><x-e>04 Stay on model · Spatial realism</x-e><x-z>04 不跑偏 · 空间真实感</x-z></span></div>
+  <h2 class="rv"><x-e>Set it once,<br>the same person all season</x-e><x-z>一次设定，<br>全剧是同一个人</x-z></h2>
+  <p class="lead rv"><x-e>Characters and scenes are set up once. Click to change the emotion: the face stays the same.</x-e><x-z>角色和场景只设定一次。点一下换情绪：脸没有变。</x-z></p>
   <div class="con rv">
     <div>
-      <div class="face br" id="face" role="img" aria-label="同一角色的六种情绪"></div>
-      <div class="emo" id="emo"><button class="on">平静</button><button>开心</button><button>惊讶</button><button>生气</button><button>难过</button><button>害羞</button></div>
+      <div class="face br" id="face" role="img" aria-label="Six emotions of one character"></div>
+      <div class="emo" id="emo"><button class="on"><x-e>Calm</x-e><x-z>平静</x-z></button><button><x-e>Happy</x-e><x-z>开心</x-z></button><button><x-e>Surprised</x-e><x-z>惊讶</x-z></button><button><x-e>Angry</x-e><x-z>生气</x-z></button><button><x-e>Sad</x-e><x-z>难过</x-z></button><button><x-e>Shy</x-e><x-z>害羞</x-z></button></div>
     </div>
-    <div class="sheet"><div class="br"><img src="agentv/shot-10.jpg" loading="lazy" alt="一个角色的整套资产包"></div><p class="note">一个角色，一整套资产包。换装、特写、道具镜头直接调用，不用重新画。</p></div>
+    <div class="sheet"><div class="br"><img src="agentv/shot-10.jpg" loading="lazy" alt="The full asset pack of one character"></div><p class="note"><x-e>One character, one full asset pack. Costume changes, close-ups and prop shots reuse it without redrawing.</x-e><x-z>一个角色，一整套资产包。换装、特写、道具镜头直接调用，不用重新画。</x-z></p></div>
   </div>
   <div class="vs rv">
-    <div class="r h"><div></div><div>提示词直出</div><div>AgentV</div></div>
-    <div class="r"><div>运镜</div><div>写进提示词，靠运气</div><div>在空间里摆机位、调焦距</div></div>
-    <div class="r"><div>一致性</div><div>每次重新生成，容易跑偏</div><div>场景与角色资产全剧共用</div></div>
-    <div class="r"><div>修改</div><div>改一处，整条重新抽</div><div>改一句台词，只重做受影响的镜头</div></div>
-    <div class="r"><div>交付</div><div>一段段素材，自己拼接</div><div>自动排时间线，配音配乐，直接成片</div></div>
+    <div class="r h"><div></div><div><x-e>Prompt to video</x-e><x-z>提示词直出</x-z></div><div>AgentV</div></div>
+    <div class="r"><div><x-e>Camera</x-e><x-z>运镜</x-z></div><div><x-e>Written into the prompt, left to luck</x-e><x-z>写进提示词，靠运气</x-z></div><div><x-e>Place cameras and set focal length in the space</x-e><x-z>在空间里摆机位、调焦距</x-z></div></div>
+    <div class="r"><div><x-e>Consistency</x-e><x-z>一致性</x-z></div><div><x-e>Regenerated every time, drifts easily</x-e><x-z>每次重新生成，容易跑偏</x-z></div><div><x-e>Scene and character assets shared across the series</x-e><x-z>场景与角色资产全剧共用</x-z></div></div>
+    <div class="r"><div><x-e>Edits</x-e><x-z>修改</x-z></div><div><x-e>Change one thing, re-roll the whole clip</x-e><x-z>改一处，整条重新抽</x-z></div><div><x-e>Change one line, redo only the affected shots</x-e><x-z>改一句台词，只重做受影响的镜头</x-z></div></div>
+    <div class="r"><div><x-e>Delivery</x-e><x-z>交付</x-z></div><div><x-e>Separate clips you stitch yourself</x-e><x-z>一段段素材，自己拼接</x-z></div><div><x-e>Automatic timeline, voice and music, a finished film</x-e><x-z>自动排时间线，配音配乐，直接成片</x-z></div></div>
   </div>
 </section>
 
 <section id="api" class="w">
-  <div class="k rv"><i></i><span class="mono ac">05 Token 平台 · 价格</span></div>
-  <h2 class="rv">同一台引擎，<br>也开放给你的代码</h2>
-  <p class="lead rv">不拍片也能用上它。Gapnil 是从算子做起的 Token 平台：一个接口调用文本、图像、语音和视频模型。让 AgentV 快起来的那套自演进算子优化，在这里变成更低的 Token 价格。</p>
+  <div class="k rv"><i></i><span class="mono ac"><x-e>05 Token platform · Price</x-e><x-z>05 Token 平台 · 价格</x-z></span></div>
+  <h2 class="rv"><x-e>The same engine,<br>open to your code</x-e><x-z>同一台引擎，<br>也开放给你的代码</x-z></h2>
+  <p class="lead rv"><x-e>You can use it without making films. Gapnil is a token platform built up from the operator level: one API for text, image, speech and video models. The self-improving operator optimization that makes AgentV fast turns into lower token prices here.</x-e><x-z>不拍片也能用上它。Gapnil 是从算子做起的 Token 平台：一个接口调用文本、图像、语音和视频模型。让 AgentV 快起来的那套自演进算子优化，在这里变成更低的 Token 价格。</x-z></p>
   <div class="st3 rv">
-    <div><b class="num" id="sN">153</b><span>可调用模型</span></div>
-    <div><b class="num" id="sP">23</b><span>模型厂商</span></div>
-    <div><b class="num"><span id="sD">2.6</span><i class="sm">折</i></b><span>低至，对比厂商官方价</span></div>
+    <div><b class="num" id="sN">153</b><span><x-e>Models available</x-e><x-z>可调用模型</x-z></span></div>
+    <div><b class="num" id="sP">23</b><span><x-e>Model vendors</x-e><x-z>模型厂商</x-z></span></div>
+    <div><b class="num"><span id="sD">2.6</span><i class="sm"><x-e>% off</x-e><x-z>折</x-z></i></b><span><x-e>At most, against vendor list prices</x-e><x-z>低至，对比厂商官方价</x-z></span></div>
   </div>
   <div class="pb br rv" id="pb">
-    <div class="pbh"><span class="mono">热门模型 · 输出价 / 百万 tokens</span><span class="mono" id="pbs">读取实时价格…</span></div>
+    <div class="pbh"><span class="mono"><x-e>Popular models · output price / million tokens</x-e><x-z>热门模型 · 输出价 / 百万 tokens</x-z></span><span class="mono" id="pbs"><x-e>Loading live prices…</x-e><x-z>读取实时价格…</x-z></span></div>
     <div id="pbr"></div>
-    <div class="pbf"><span><i class="lg a"></i>Gapnil 价</span><span><i class="lg"></i>厂商官方价</span><a href="https://zerogap.cn/" class="ac">全部模型价格 →</a></div>
+    <div class="pbf"><span><x-e><i class="lg a"></i>Gapnil price</x-e><x-z><i class="lg a"></i>Gapnil 价</x-z></span><span><x-e><i class="lg"></i>Vendor list price</x-e><x-z><i class="lg"></i>厂商官方价</x-z></span><a href="https://zerogap.cn/" class="ac"><x-e>All model prices →</x-e><x-z>全部模型价格 →</x-z></a></div>
   </div>
   <div class="mq rv" aria-hidden="true"><div id="mqi"></div></div>
   <div class="term br rv">
-    <div class="tb"><span class="mono">Claude Code · 一行命令，切换到 Gapnil</span><button id="cp">复制</button></div>
+    <div class="tb"><span class="mono"><x-e>Claude Code · switch to Gapnil with one command</x-e><x-z>Claude Code · 一行命令，切换到 Gapnil</x-z></span><button id="cp"><x-e>Copy</x-e><x-z>复制</x-z></button></div>
     <pre><span class="ac">$</span> <code id="cmd">eval "$(curl -fsSL 'https://zerogap.cn/switch/claude?model=glm-5.3')"</code><i class="cur"></i></pre>
     <div class="mch" id="mch"></div>
-    <p class="note" style="margin:0;padding:0 20px 18px">粘贴到终端回车，输入 API Key 后运行 claude。适用于 macOS / Linux。Codex 的切换命令和可选模型见官网。</p>
+    <p class="note" style="margin:0;padding:0 20px 18px"><x-e>Paste into a terminal and press Enter, type your API key, then run claude. Works on macOS and Linux. The Codex command and the model list are on the website.</x-e><x-z>粘贴到终端回车，输入 API Key 后运行 claude。适用于 macOS / Linux。Codex 的切换命令和可选模型见官网。</x-z></p>
   </div>
   <div class="after rv" style="margin-top:44px">
-    <div><b>Token 平台</b><span>按用量计费，随充随用。工具调用、流式和 JSON 模式照常使用。适合开发者和技术团队。</span></div>
-    <div><b>企业合同</b><span>用承诺量换专属价格和额度，把 API 一键导入自己的平台。适合用量大的企业和平台。</span></div>
-    <div><b>私有化与推理优化</b><span>部署到你的环境，或为你的模型和硬件做算子优化。适合数据敏感企业、算力中心、服务器厂商。</span></div>
+    <div><b><x-e>Token platform</x-e><x-z>Token 平台</x-z></b><span><x-e>Pay for what you use and top up any time. Tool calls, streaming and JSON mode work as usual. For developers and technical teams.</x-e><x-z>按用量计费，随充随用。工具调用、流式和 JSON 模式照常使用。适合开发者和技术团队。</x-z></span></div>
+    <div><b><x-e>Enterprise contracts</x-e><x-z>企业合同</x-z></b><span><x-e>Commit to a volume for dedicated prices and quotas, and import the API into your own platform in one click. For high-volume companies and platforms.</x-e><x-z>用承诺量换专属价格和额度，把 API 一键导入自己的平台。适合用量大的企业和平台。</x-z></span></div>
+    <div><b><x-e>On-premises and inference optimization</x-e><x-z>私有化与推理优化</x-z></b><span><x-e>Deploy in your environment, or have operators optimized for your model and hardware. For data-sensitive companies, compute centers and server vendors.</x-e><x-z>部署到你的环境，或为你的模型和硬件做算子优化。适合数据敏感企业、算力中心、服务器厂商。</x-z></span></div>
   </div>
-  <p class="rv" style="margin-top:34px"><a class="btn p" href="https://zerogap.cn/">查看模型价格</a> <a class="btn g" href="https://zerogap.cn/">获取 API Key</a></p>
-  <p class="note rv">价格与模型数量从 zerogap.cn 实时读取，匿名访客可见的国内模型、OpenAI 格式接口、按官网汇率折算人民币；读取失败时显示 2026 年 11 月 22 日的快照。以官网为准。</p>
+  <p class="rv" style="margin-top:34px"><a class="btn p" href="https://zerogap.cn/"><x-e>See model prices</x-e><x-z>查看模型价格</x-z></a> <a class="btn g" href="https://zerogap.cn/"><x-e>Get an API key</x-e><x-z>获取 API Key</x-z></a></p>
+  <p class="note rv"><x-e>Prices and model counts are read live from zerogap.cn: domestic models visible to anonymous visitors, OpenAI-format API, converted to CNY at the site's rate. If loading fails, a snapshot from 22 November 2026 is shown. The website is authoritative.</x-e><x-z>价格与模型数量从 zerogap.cn 实时读取，匿名访客可见的国内模型、OpenAI 格式接口、按官网汇率折算人民币；读取失败时显示 2026 年 11 月 22 日的快照。以官网为准。</x-z></p>
 </section>
 
 <section id="cost" class="w">
-  <div class="k rv"><i></i><span class="mono ac">06 算账 · 价格</span></div>
-  <h2 class="rv">拍一部剧，<br>算力要花多少</h2>
-  <p class="lead rv">拖一拖，换成你自己的剧。</p>
+  <div class="k rv"><i></i><span class="mono ac"><x-e>06 The math · Price</x-e><x-z>06 算账 · 价格</x-z></span></div>
+  <h2 class="rv"><x-e>A whole series:<br>what does the compute cost</x-e><x-z>拍一部剧，<br>算力要花多少</x-z></h2>
+  <p class="lead rv"><x-e>Drag the sliders to match your own series.</x-e><x-z>拖一拖，换成你自己的剧。</x-z></p>
   <div class="calc rv">
     <div>
-      <div class="sl"><label>集数<b id="v1">80</b></label><input type="range" id="s1" min="1" max="200" value="80"></div>
-      <div class="sl"><label>每集镜头数<b id="v2">40</b></label><input type="range" id="s2" min="5" max="120" value="40"></div>
-      <div class="sl"><label>每个镜头平均生成次数<b id="v3">2</b></label><input type="range" id="s3" min="1" max="6" value="2"></div>
+      <div class="sl"><label><x-e>Episodes</x-e><x-z>集数</x-z><b id="v1">80</b></label><input type="range" id="s1" min="1" max="200" value="80"></div>
+      <div class="sl"><label><x-e>Shots per episode</x-e><x-z>每集镜头数</x-z><b id="v2">40</b></label><input type="range" id="s2" min="5" max="120" value="40"></div>
+      <div class="sl"><label><x-e>Average generations per shot</x-e><x-z>每个镜头平均生成次数</x-z><b id="v3">2</b></label><input type="range" id="s3" min="1" max="6" value="2"></div>
     </div>
     <div class="out br">
-      <div class="a"><div class="mono mute">AgentV 算力成本（估算）</div><div class="num" id="o1">¥128–192</div></div>
-      <div class="b"><div class="mono">同样条数，托管 API 起步价</div><div class="num" id="o2">¥2,304–23,962</div></div>
+      <div class="a"><div class="mono mute"><x-e>AgentV compute cost (estimate)</x-e><x-z>AgentV 算力成本（估算）</x-z></div><div class="num" id="o1">¥128–192</div></div>
+      <div class="b"><div class="mono"><x-e>Same clip count at hosted-API entry prices</x-e><x-z>同样条数，托管 API 起步价</x-z></div><div class="num" id="o2">¥2,304–23,962</div></div>
       <div class="c" id="o3"></div>
     </div>
   </div>
-  <p class="note rv" style="margin-top:22px">按单条 5 秒视频 ¥0.02–0.03 估算（8×RTX 5090，硬件 3 年摊销，电价约 1 元/度，不含人力与运营）。托管 API 按公开起步价 $0.05–0.52 一条、汇率 7.2 折算。一台这样的服务器硬件投入约 15–20 万元，单机日产约 1.2 万条；整机可以搬进客户机房，素材与成片不出内网。只算算力，不是报价。</p>
+  <p class="note rv" style="margin-top:22px"><x-e>Estimated at ¥0.02–0.03 per 5-second clip (8×RTX 5090, hardware amortized over 3 years, electricity at about ¥1/kWh, excluding staff and operations). Hosted APIs are counted at public entry prices of $0.05–0.52 a clip, at 7.2 CNY per USD. One such server costs about ¥150–200K in hardware and produces about 12,000 clips a day; it can go into the customer's server room, so source material and clips stay on the internal network. This covers compute only and is not a quote.</x-e><x-z>按单条 5 秒视频 ¥0.02–0.03 估算（8×RTX 5090，硬件 3 年摊销，电价约 1 元/度，不含人力与运营）。托管 API 按公开起步价 $0.05–0.52 一条、汇率 7.2 折算。一台这样的服务器硬件投入约 15–20 万元，单机日产约 1.2 万条；整机可以搬进客户机房，素材与成片不出内网。只算算力，不是报价。</x-z></p>
 </section>
 
 <div class="fin w rv">
-  <div class="mono ac" style="margin-bottom:18px">拍得起 · 等得起 · 镜头是真的</div>
-  <h2>你描述世界，<br><span class="ac">AgentV 拍成电影</span></h2>
-  <p class="lead" style="margin:22px auto 34px">两三分钱一条，约 5 秒出片，每个镜头都拍在真实的 3D 空间里。拍片走 AgentV，写代码走 Gapnil。</p>
-  <a class="btn p" href="https://poping.art/agentv">用 AgentV 拍片</a> <a class="btn g" href="https://zerogap.cn/">用 Gapnil API</a>
+  <div class="mono ac" style="margin-bottom:18px"><x-e>Affordable · No waiting · Real cameras</x-e><x-z>拍得起 · 等得起 · 镜头是真的</x-z></div>
+  <h2><x-e>You describe the world,<br><span class="ac">AgentV turns it into film</span></x-e><x-z>你描述世界，<br><span class="ac">AgentV 拍成电影</span></x-z></h2>
+  <p class="lead" style="margin:22px auto 34px"><x-e>¥0.02–0.03 a clip, about 5 seconds to render, every shot taken inside a real 3D space. Make films with AgentV, write code with Gapnil.</x-e><x-z>两三分钱一条，约 5 秒出片，每个镜头都拍在真实的 3D 空间里。拍片走 AgentV，写代码走 Gapnil。</x-z></p>
+  <a class="btn p" href="https://poping.art/agentv"><x-e>Make films with AgentV</x-e><x-z>用 AgentV 拍片</x-z></a> <a class="btn g" href="https://zerogap.cn/"><x-e>Use the Gapnil API</x-e><x-z>用 Gapnil API</x-z></a>
 </div>
 </main>
 
 <footer><div class="w">
-  AgentV · Gapnil 旗下品牌 · 北京零隙智能科技有限公司 · <a href="https://zerogap.cn/" style="color:#c9d2cc">zerogap.cn</a> · <a href="https://poping.art/agentv" style="color:#c9d2cc">poping.art/agentv</a><br>
-  数据口径：Gapnil 实验记录与线上日志（2026 年 9–10 月），8×RTX 5090，显卡之间无 NVLink。226.2 秒、91.1 秒为 49 步完整模式；16 秒、11.9 秒为 4 步；6.96 秒为线上 3 步配置的完整请求中位数（n=13），其中 1344×768 生成 5.23 秒；1280×720 生成 4.83 秒（n=152）。4 步与 3 步模式使用开源加速 LoRA，画质与完整模式不等价。成本为估算。
+  <x-e>AgentV · a Gapnil brand · 北京零隙智能科技有限公司 · <a href="https://zerogap.cn/" style="color:#c9d2cc">zerogap.cn</a> · <a href="https://poping.art/agentv" style="color:#c9d2cc">poping.art/agentv</a><br>Data basis: Gapnil experiment records and production logs (September–October 2026), 8×RTX 5090 with no NVLink between cards. 226.2 s and 91.1 s are the full 49-step mode; 16 s and 11.9 s are 4-step; 6.96 s is the median full request in the 3-step production setup (n=13), of which 1344×768 generation takes 5.23 s; 1280×720 generation takes 4.83 s (n=152). The 4-step and 3-step modes use open-source acceleration LoRAs and are not equal in quality to full mode. Costs are estimates.</x-e><x-z>AgentV · Gapnil 旗下品牌 · 北京零隙智能科技有限公司 · <a href="https://zerogap.cn/" style="color:#c9d2cc">zerogap.cn</a> · <a href="https://poping.art/agentv" style="color:#c9d2cc">poping.art/agentv</a><br>
+  数据口径：Gapnil 实验记录与线上日志（2026 年 9–10 月），8×RTX 5090，显卡之间无 NVLink。226.2 秒、91.1 秒为 49 步完整模式；16 秒、11.9 秒为 4 步；6.96 秒为线上 3 步配置的完整请求中位数（n=13），其中 1344×768 生成 5.23 秒；1280×720 生成 4.83 秒（n=152）。4 步与 3 步模式使用开源加速 LoRA，画质与完整模式不等价。成本为估算。</x-z>
 </div></footer>
 
 <script>
+const ZH=!document.documentElement.classList.contains('en'),L=(e,z)=>ZH?z:e,tx=el=>(el.querySelector(ZH?'x-z':'x-e')||el).textContent;
+if(!ZH)document.title='Gapnil × AgentV · The inference engine that speeds itself up';
+['lgs','lgh'].forEach(i=>{const a=document.getElementById(i);if(a)a.href='?lang='+(ZH?'en':'zh')});
 const $=id=>document.getElementById(id),rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
 addEventListener('scroll',()=>$('nav').classList.toggle('s',scrollY>40),{passive:true});
 if(rm){$('hv').removeAttribute('autoplay');$('hv').pause()}
@@ -489,14 +499,14 @@ if(rm){$('r1').textContent='5.17';$('r2').textContent='4.83';$('b1').style.width
 // camera
 (function(){const im=$('vimg'),vf=$('vf');let base='scale(1.14)',fz=1,mx=0,my=0;
 function ap(){im.style.transform=`rotateY(${mx*4}deg) rotateX(${-my*4}deg) scale(${fz}) ${base}`}
-document.querySelectorAll('#pre button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#pre button').forEach(x=>x.classList.remove('on'));b.classList.add('on');base=b.dataset.t;$('cn').textContent='CAM · '+b.textContent;ap()});
+document.querySelectorAll('#pre button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#pre button').forEach(x=>x.classList.remove('on'));b.classList.add('on');base=b.dataset.t;$('cn').textContent='CAM · '+tx(b);ap()});
 $('fov').oninput=e=>{const v=+e.target.value;$('fv').textContent=v;fz=Math.tan(32*Math.PI/180)/Math.tan(v/2*Math.PI/180);ap()};
 vf.onmousemove=e=>{const r=vf.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5;ap()};
 vf.onmouseleave=()=>{mx=my=0;ap()};ap()})();
 // emotions
 document.querySelectorAll('#emo button').forEach((b,i)=>b.onclick=()=>{document.querySelectorAll('#emo button').forEach(x=>x.classList.remove('on'));b.classList.add('on');$('face').style.backgroundPosition=`${(i%3)*50}% ${Math.floor(i/3)*100}%`});
 // scrolly
-(function(){const V=[226.2,91.1,16,11.9,6.96],X=['1 卡 · 49 步 · 完整流水线稳态','4 卡 · 49 步 · 2.5×','4 卡 · 4 步 · 14.1×','8 卡 · 4 步 · 19.0×','7 卡 · 3 步 · 线上中位数 n=13 · 32.5×'],
+(function(){const V=[226.2,91.1,16,11.9,6.96],X=ZH?['1 卡 · 49 步 · 完整流水线稳态','4 卡 · 49 步 · 2.5×','4 卡 · 4 步 · 14.1×','8 卡 · 4 步 · 19.0×','7 卡 · 3 步 · 线上中位数 n=13 · 32.5×']:['1 GPU · 49 steps · full pipeline, steady state','4 GPUs · 49 steps · 2.5×','4 GPUs · 4 steps · 14.1×','8 GPUs · 4 steps · 19.0×','7 GPUs · 3 steps · production median n=13 · 32.5×'],
 PI=[[],[1],[1],[1],[0,2,3]],sc=$('scr'),st=[...$('stg').children],ds=[...$('dots').children],pp=[...$('pipe').children];let last=-1;
 function u(){const r=sc.getBoundingClientRect(),p=Math.max(0,Math.min(1,-r.top/(sc.offsetHeight-innerHeight))),s=p*(V.length-1)*1.08,i=Math.min(V.length-1,Math.floor(s)),fr=Math.min(1,(s-i)/.55),j=Math.min(V.length-1,i+1);
  const v=Math.exp(Math.log(V[i])+(Math.log(V[j])-Math.log(V[i]))*(i===j?0:fr));
@@ -504,30 +514,30 @@ function u(){const r=sc.getBoundingClientRect(),p=Math.max(0,Math.min(1,-r.top/(
  $('mt').style.width=Math.max(1.2,(Math.log(v)-Math.log(5))/(Math.log(226.2)-Math.log(5))*100)+'%';
  const a=fr>=1?j:i;if(a!==last){last=a;st.forEach((e,k)=>e.classList.toggle('on',k===a));ds.forEach((e,k)=>e.classList.toggle('on',k<=a));pp.forEach((e,k)=>e.classList.toggle('on',PI[a].includes(k)));$('xn').textContent=X[a]}}
 addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u()})();
-$("cp").onclick=()=>{const t=$("cmd").textContent,b=$("cp");(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>b.textContent="已复制",()=>{const r=document.createRange();r.selectNode($("cmd"));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent="已选中"});setTimeout(()=>b.textContent="复制",1600)};
+$("cp").onclick=()=>{const t=$("cmd").textContent,b=$("cp");(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>b.textContent=L("Copied","已复制"),()=>{const r=document.createRange();r.selectNode($("cmd"));getSelection().removeAllRanges();getSelection().addRange(r);b.textContent=L("Selected","已选中")});setTimeout(()=>b.textContent=L("Copy","复制"),1600)};
 // benchmark bars, rejected stamps, RSI loop
 new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){document.querySelectorAll('#bm i').forEach(i=>i.style.width=i.dataset.w+'%');o.disconnect()}},{threshold:.3}).observe($('bm'));
 new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){$('rej').classList.add('go');o.disconnect()}},{threshold:.4}).observe($('rej'));
-(function(){const T=['优化开始前，先把“什么算改好了”拆成可以逐条判定的条件，审定后本轮不变。','智能体在独立工作区里，依据性能剖析结果自主选择优化方向并修改代码。','评审与提出优化的智能体分开运行，逐条核验：数值对齐、画质不退化、输出完整、运行稳定，最后才看速度。','通过的代码和经验报告成为下一轮的起点；被退回的条件和证据同样留档。','人工评审放在发布之前，不参与优化反馈，防止系统“为分数而优化”。'],
+(function(){const T=ZH?['优化开始前，先把“什么算改好了”拆成可以逐条判定的条件，审定后本轮不变。','智能体在独立工作区里，依据性能剖析结果自主选择优化方向并修改代码。','评审与提出优化的智能体分开运行，逐条核验：数值对齐、画质不退化、输出完整、运行稳定，最后才看速度。','通过的代码和经验报告成为下一轮的起点；被退回的条件和证据同样留档。','人工评审放在发布之前，不参与优化反馈，防止系统“为分数而优化”。']:['Before any optimization starts, “what counts as better” is broken into conditions that can be judged one by one. Once approved, they stay fixed for the round.','In an isolated workspace, agents choose what to optimize from profiling results and change the code themselves.','The reviewer runs separately from the agent that proposed the change and checks each condition: numerical alignment, no loss of quality, complete output, stable runs, and only then speed.','Passing code and the round report become the starting point of the next round. Failed conditions and their evidence are archived too.','Human review sits before release and stays out of the optimization feedback, so the system cannot learn to optimize for the score.'],
 ns=[...$('loop').children];let i=0,tm;function go(k){i=k;ns.forEach((n,j)=>n.classList.toggle('on',j===k));$('ld').textContent=T[k];clearTimeout(tm);if(!rm)tm=setTimeout(()=>go((k+1)%5),3200)}
 ns.forEach((n,k)=>n.onclick=()=>go(k));go(0)})();
 // live price board (zerogap.cn/api/models), snapshot fallback
 (function(){const SNAP={"updated_at":1795336005459,"cny_per_usd":6.689203,"count":153,"providers":23,"max_discount_percent":74,"vendors":["Alibaba","BAAI","ByteDance","ByteDance Seed","DeepSeek","Kuaishou (Kling)","Meituan","MiniMax","Moonshot","Moonshot AI","MoonshotAI","StepFun","Tencent","Wan","Xiaomi","Z.ai","alibaba","deepseek","inclusionAI","inclusionAI (Ant Group)","inclusionai","minimax","shibing624"],"models":[{"id":"deepseek-r1","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":4.212,"list_output_per_million":5.4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"deepseek-v3","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":1.0164,"list_output_per_million":1.1,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"deepseek-v3.1","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.741,"list_output_per_million":0.95,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"deepseek-v3.2","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.481,"list_output_per_million":1.85,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":71.8}},{"id":"deepseek-v3.2-thinking","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.3276,"list_output_per_million":0.42,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"deepseek-v4-flash-vision-exp","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.6336,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":47.2}},{"id":"deepseek-v4.1-flash","provider":"DeepSeek","type":"text","featured":true,"pricing":{"output_per_million":0.156,"list_output_per_million":0.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":74}},{"id":"deepseek-v4.1-flash-1017","provider":"DeepSeek","type":"text","featured":true,"pricing":{"output_per_million":0.156,"list_output_per_million":0.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":74}},{"id":"deepseek-v4.1-flash-1017-fast","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":1.872,"list_output_per_million":2.4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"deepseek-v4.1-flash-1017-ultrafast","provider":"deepseek","type":"text","featured":false,"pricing":{"output_per_million":8.8704,"list_output_per_million":9.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"glm-4.5v","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":1.6632,"list_output_per_million":1.8,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"glm-4.7-flash","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":0.429,"list_output_per_million":0.55,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"glm-5-turbo","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":3.12,"list_output_per_million":4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"glm-5.2-fast","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":6.864,"list_output_per_million":8.8,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"glm-5.3","provider":"Z.ai","type":"text","featured":true,"pricing":{"output_per_million":1.573,"list_output_per_million":4.4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":64.3}},{"id":"glm-5.3-flash","provider":"Z.ai","type":"text","featured":true,"pricing":{"output_per_million":0.13,"list_output_per_million":0.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":73.2}},{"id":"glm-5.3-flashx","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":0.975,"list_output_per_million":1.25,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"glm-5.3-flashx-legal","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":1.155,"list_output_per_million":1.25,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"glm-5v-turbo","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":3.83664,"list_output_per_million":4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":4.1}},{"id":"hy3","provider":"Tencent","type":"text","featured":false,"pricing":{"output_per_million":0.4524,"list_output_per_million":0.58,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"hy4","provider":"Tencent","type":"text","featured":false,"pricing":{"output_per_million":0.67527,"list_output_per_million":1.2505,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":46}},{"id":"hy4-flash","provider":"Tencent","type":"text","featured":false,"pricing":{"output_per_million":0.07587,"list_output_per_million":0.1405,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":46}},{"id":"kimi-k2","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":2.20317,"list_output_per_million":2.3,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":4.2}},{"id":"kimi-k2-thinking","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":1.56,"list_output_per_million":2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"kimi-k2.5","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":1.235,"list_output_per_million":3,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":58.7}},{"id":"kimi-k2.6","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":1.69,"list_output_per_million":4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":57.8}},{"id":"kimi-k2.7-code","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":3.12,"list_output_per_million":4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"kimi-k2.7-code-highspeed","provider":"Moonshot AI","type":"text","featured":false,"pricing":{"output_per_million":7.776,"list_output_per_million":8,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":2.8}},{"id":"kimi-k3.1-pro","provider":"MoonshotAI","type":"text","featured":false,"pricing":{"output_per_million":4.8,"list_output_per_million":10,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":52}},{"id":"kimi-k3.1-pro-highspeed","provider":"Moonshot AI","type":"text","featured":false,"pricing":{"output_per_million":19.8,"list_output_per_million":20,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":1}},{"id":"ling-3.0-flash","provider":"inclusionAI (Ant Group)","type":"text","featured":false,"pricing":{"output_per_million":0.0702,"list_output_per_million":0.18,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":61}},{"id":"ling-3.0-flash-fin","provider":"inclusionAI (Ant Group)","type":"text","featured":false,"pricing":{"output_per_million":0.113652,"list_output_per_million":0.123,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"ling-3.0-flash-sante","provider":"inclusionAI (Ant Group)","type":"text","featured":false,"pricing":{"output_per_million":0.09594,"list_output_per_million":0.123,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"ling-3.0-flash-vl","provider":"inclusionAI (Ant Group)","type":"text","featured":false,"pricing":{"output_per_million":0.15768,"list_output_per_million":0.18,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":12.4}},{"id":"ling-3.1-flash","provider":"inclusionAI","type":"text","featured":false,"pricing":{"output_per_million":0.1755,"list_output_per_million":0.225,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"ling-3.1-flash-1019","provider":"inclusionai","type":"text","featured":false,"pricing":{"output_per_million":0.702,"list_output_per_million":0.9,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"longcat-2.5","provider":"Meituan","type":"text","featured":false,"pricing":{"output_per_million":1.3806,"list_output_per_million":2.95,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":53.2}},{"id":"mimo-v2.5","provider":"Xiaomi","type":"text","featured":false,"pricing":{"output_per_million":0.258161,"list_output_per_million":0.28,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.8}},{"id":"mimo-v2.6-flash","provider":"Xiaomi","type":"text","featured":false,"pricing":{"output_per_million":0.18,"list_output_per_million":0.28,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":35.7}},{"id":"mimo-v2.6-pro","provider":"Xiaomi","type":"text","featured":false,"pricing":{"output_per_million":0.768,"list_output_per_million":0.87,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":11.7}},{"id":"mimo-v2.6-pro-ultraspeed","provider":"Xiaomi","type":"text","featured":false,"pricing":{"output_per_million":8.308432,"list_output_per_million":8.7,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":4.5}},{"id":"minimax-h3","provider":"MiniMax","type":"video","featured":true,"pricing":{"output_per_million":0,"list_output_per_million":0,"media_unit_price":0.0208,"media_unit":"second","list_media_unit_price":0.08,"media_prices":{"768P":0.0208,"2K":0.0338},"list_media_prices":{"768P":0.08,"2K":0.13},"discount_percent":74}},{"id":"minimax-m2","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":0.936,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"minimax-m2.1","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":1.06089,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":11.6}},{"id":"minimax-m2.5","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":0.507,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":57.7}},{"id":"minimax-m3","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":0.612,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":48.9}},{"id":"minimax-m3.1-flash","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":0.288,"list_output_per_million":0.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":52}},{"id":"qwen-3-30b","provider":"alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.48,"list_output_per_million":0.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":4}},{"id":"qwen-3-32b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.3224,"list_output_per_million":0.64,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":49.3}},{"id":"qwen-mt-plus","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":5.7486,"list_output_per_million":7.37,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3-30b-a3b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.486,"list_output_per_million":0.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":2.8}},{"id":"qwen3-coder-next","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":1.35,"list_output_per_million":1.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":9.4}},{"id":"qwen3-next-80b-a3b-instruct","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.936,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3-vl-235b-a22b-instruct","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.96,"list_output_per_million":1.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":40.5}},{"id":"qwen3-vl-instruct","provider":"alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.942,"list_output_per_million":1.9,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":48.8}},{"id":"qwen3.5-397b-a17b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":3.4992,"list_output_per_million":3.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":2.8}},{"id":"qwen3.5-flash","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.312,"list_output_per_million":0.4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.5-plus","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":1.872,"list_output_per_million":2.4,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.6-plus","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":2.064031,"list_output_per_million":3,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":31.2}},{"id":"qwen3.7-flash","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.1014,"list_output_per_million":0.13,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.7-max","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":5.85,"list_output_per_million":7.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.7-plus","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":1.489015,"list_output_per_million":1.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":6.9}},{"id":"qwen3.8-2.4t-a95b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":4.697497,"list_output_per_million":6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":21.7}},{"id":"qwen3.8-27b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.78,"list_output_per_million":3,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":74}},{"id":"qwen3.8-flash","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.264,"list_output_per_million":0.47,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":43.8}},{"id":"qwen3.8-max-0902","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":4.68,"list_output_per_million":6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.8-max-prime","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":10.448244,"list_output_per_million":12,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":12.9}},{"id":"qwen3.8-omni-flash","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":0.282,"list_output_per_million":0.47,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":40}},{"id":"qwen4-max","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":3.51,"list_output_per_million":4.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"seed-1.8","provider":"ByteDance","type":"text","featured":false,"pricing":{"output_per_million":1.56,"list_output_per_million":2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"seed-2.1-turbo","provider":"ByteDance Seed","type":"text","featured":false,"pricing":{"output_per_million":2.331912,"list_output_per_million":2.5,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":6.7}},{"id":"step-5-preview","provider":"StepFun","type":"text","featured":false,"pricing":{"output_per_million":0.884,"list_output_per_million":2.7,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":67.3}},{"id":"glm-5.2","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":1.573,"list_output_per_million":5.75,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":72.6}},{"id":"kimi-k3","provider":"Moonshot","type":"text","featured":false,"pricing":{"output_per_million":7.644,"list_output_per_million":15,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":49}},{"id":"deepseek-v4-flash","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.156,"list_output_per_million":0.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":74}},{"id":"minimax-m2.7","provider":"MiniMax","type":"text","featured":false,"pricing":{"output_per_million":1.1088,"list_output_per_million":1.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"deepseek-v4-pro","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":1.82952,"list_output_per_million":1.98,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":7.6}},{"id":"glm-4.5","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":1.6104,"list_output_per_million":2.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":26.8}},{"id":"glm-4.5-air","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":0.853978,"list_output_per_million":1.1,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22.4}},{"id":"glm-4.6","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":1.452,"list_output_per_million":2.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":34}},{"id":"glm-4.7","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":2.00525,"list_output_per_million":4.15,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":52.3}},{"id":"glm-5","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":2.112,"list_output_per_million":3.2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":34}},{"id":"glm-5.1","provider":"Z.ai","type":"text","featured":false,"pricing":{"output_per_million":2.739,"list_output_per_million":4.15,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":34}},{"id":"deepseek-v4-flash-0731","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.1716,"list_output_per_million":0.66,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":73.1}},{"id":"qwen3.5-35b-a3b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":1.56,"list_output_per_million":2,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.6-27b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":2.808,"list_output_per_million":3.6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":22}},{"id":"qwen3.6-35b-a3b","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":1.02375,"list_output_per_million":2.25,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":55.4}},{"id":"qwen3.8-max","provider":"Alibaba","type":"text","featured":false,"pricing":{"output_per_million":4.32,"list_output_per_million":6,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":28}},{"id":"deepseek-v4-pro-0813","provider":"DeepSeek","type":"text","featured":false,"pricing":{"output_per_million":0.806,"list_output_per_million":1.98,"media_unit_price":null,"media_unit":null,"list_media_unit_price":null,"media_prices":null,"list_media_prices":null,"discount_percent":58.8}}]};
-const esc=t=>String(t).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';'),VN={'z.ai':'GLM','alibaba':'Qwen','moonshot':'Kimi','moonshot ai':'Kimi','moonshotai':'Kimi','bytedance':'Seed','bytedance seed':'Seed','tencent':'混元','xiaomi':'MiMo','stepfun':'Step','kuaishou (kling)':'Kling','inclusionai':'Ling','inclusionai (ant group)':'Ling','meituan':'LongCat','deepseek':'DeepSeek','minimax':'MiniMax','baai':'BGE','wan':'Wan'};
+const esc=t=>String(t).replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';'),VN={'z.ai':'GLM','alibaba':'Qwen','moonshot':'Kimi','moonshot ai':'Kimi','moonshotai':'Kimi','bytedance':'Seed','bytedance seed':'Seed','tencent':ZH?'混元':'Hunyuan','xiaomi':'MiMo','stepfun':'Step','kuaishou (kling)':'Kling','inclusionai':'Ling','inclusionai (ant group)':'Ling','meituan':'LongCat','deepseek':'DeepSeek','minimax':'MiniMax','baai':'BGE','wan':'Wan'};
 const fam=p=>VN[String(p||'').toLowerCase()]||p;
 function price(m){const p=m.pricing,media=p.media_unit_price!=null,tier=media?Object.entries(p.media_prices||{}).sort((a,b)=>a[1]-b[1])[0]?.[0]:null;
  const now=tier?p.media_prices[tier]:media?p.media_unit_price:p.output_per_million,list=tier?p.list_media_prices?.[tier]:media?p.list_media_unit_price:p.list_output_per_million;
- return{now,list,tier,unit:media?(p.media_unit==='second'?'秒':'次'):''}}
+ return{now,list,tier,unit:media?(p.media_unit==='second'?L('s','秒'):L('call','次')):''}}
 function pick(ms){const by=(a,b)=>(b.pricing.discount_percent||0)-(a.pricing.discount_percent||0)||a.id.localeCompare(b.id);
  const out=ms.filter(m=>m.featured).sort(by).slice(0,5),seen=new Set(out.map(m=>fam(m.provider)));
  for(const m of ms.filter(m=>m.type==='text'&&m.pricing.discount_percent&&m.pricing.list_output_per_million).sort(by)){if(out.length>=8)break;const f=fam(m.provider);if(seen.has(f))continue;seen.add(f);out.push(m)}
  return out}
 function draw(d,live){const rate=d.cny_per_usd||SNAP.cny_per_usd,ms=d.models,rows=pick(ms),yen=v=>'¥'+(v*rate).toFixed(2);
  const n=live?ms.length:d.count,pv=live?new Set(ms.map(m=>m.provider).filter(Boolean)).size:d.providers,dc=ms.map(m=>m.pricing.discount_percent).filter(x=>x!=null),mx=live?(dc.length?Math.max(...dc):null):d.max_discount_percent;
- $('sN').textContent=n;$('sP').textContent=pv;if(mx!=null)$('sD').textContent=Math.round(100-mx)/10;
- $('pbr').innerHTML=rows.map(m=>{const x=price(m);if(!(x.now>0))return'';const sh=x.list>0?Math.min(100,x.now/x.list*100):100,sv=x.tier?(x.list>0?100*(1-x.now/x.list):0):m.pricing.discount_percent,off=sv?Math.round(100-sv)/10+' 折':'';
-  return`<div class="pr"><div class="nm">${esc(m.id)}${off?`<em>${esc(off)}</em>`:''}${m.id==='minimax-h3'?'<em class="h">AgentV 用的就是它</em>':''}</div><div class="bar"><i data-w="${sh.toFixed(1)}"></i></div><div class="px"><b>${yen(x.now)}</b><u>${x.unit?'/'+x.unit:''}${x.tier?' · '+esc(x.tier):''}</u>${x.list?`<s>${yen(x.list)}</s>`:''}</div></div>`}).join('');
- const t=new Date(d.updated_at);$('pbs').innerHTML=live?`<span class="ac">● 实时</span> · 更新于 ${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}`:'快照 · 2026-11-22';
+ $('sN').textContent=n;$('sP').textContent=pv;if(mx!=null)$('sD').textContent=ZH?Math.round(100-mx)/10:Math.round(mx);
+ $('pbr').innerHTML=rows.map(m=>{const x=price(m);if(!(x.now>0))return'';const sh=x.list>0?Math.min(100,x.now/x.list*100):100,sv=x.tier?(x.list>0?100*(1-x.now/x.list):0):m.pricing.discount_percent,off=sv?(ZH?Math.round(100-sv)/10+' 折':'−'+Math.round(sv)+'%'):'';
+  return`<div class="pr"><div class="nm">${esc(m.id)}${off?`<em>${esc(off)}</em>`:''}${m.id==='minimax-h3'?'<em class="h">'+L('AgentV runs on this','AgentV 用的就是它')+'</em>':''}</div><div class="bar"><i data-w="${sh.toFixed(1)}"></i></div><div class="px"><b>${yen(x.now)}</b><u>${x.unit?'/'+x.unit:''}${x.tier?' · '+esc(x.tier):''}</u>${x.list?`<s>${yen(x.list)}</s>`:''}</div></div>`}).join('');
+ const t=new Date(d.updated_at);$('pbs').innerHTML=live?`<span class="ac">● ${L('Live','实时')}</span> · ${L('updated','更新于')} ${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}`:L('Snapshot','快照')+' · 2026-11-22';
  const go=()=>document.querySelectorAll('#pbr .bar i').forEach(i=>i.style.width=i.dataset.w+'%');
  new IntersectionObserver((e,o)=>{if(e[0].isIntersecting){setTimeout(go,150);o.disconnect()}},{threshold:.2}).observe($('pb'));
  const vs=[...new Set((live?ms.map(m=>m.provider):d.vendors).filter(Boolean).map(fam))];$('mqi').innerHTML=[...vs,...vs].map(v=>`<span>${esc(v)}</span>`).join('');
@@ -541,7 +551,7 @@ fetch('https://zerogap.cn/api/models',{signal:ac.signal,credentials:'omit'}).the
 (function(){const f=n=>Math.round(n).toLocaleString('en-US');
 function c(){const a=+$('s1').value,b=+$('s2').value,k=+$('s3').value,n=a*b*k;$('v1').textContent=a;$('v2').textContent=b;$('v3').textContent=k;
  $('o1').textContent='¥'+f(n*.02)+'–'+f(n*.03);$('o2').textContent='¥'+f(n*.05*7.2)+'–'+f(n*.52*7.2);
- const h=n*6.96/3600;$('o3').textContent=`共 ${f(n)} 条 5 秒镜头。单机串行约 ${h<1?(h*60).toFixed(0)+' 分钟':h.toFixed(1)+' 小时'}出完（按线上中位数 6.96 秒一条）。`}
+ const h=n*6.96/3600;$('o3').textContent=ZH?`共 ${f(n)} 条 5 秒镜头。单机串行约 ${h<1?(h*60).toFixed(0)+' 分钟':h.toFixed(1)+' 小时'}出完（按线上中位数 6.96 秒一条）。`:`${f(n)} five-second shots in total. One machine, one at a time, finishes in about ${h<1?(h*60).toFixed(0)+' minutes':h.toFixed(1)+' hours'} (at the 6.96 s production median per clip).`}
 ['s1','s2','s3'].forEach(i=>$(i).oninput=c);c()})();
 </script>
 </body>
